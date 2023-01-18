@@ -7,6 +7,8 @@ package frc.robot;
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.tankDriveC;
+import frc.robot.subsystems.DriveRobot;
 import frc.robot.subsystems.ExampleSubsystem;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -23,12 +25,14 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static XboxController XboxController = new XboxController(0);  
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  public static DriveRobot DriveRobot = new DriveRobot();
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    DriveRobot.setDefaultCommand(new tankDriveC(DriveRobot));
     // Configure the trigger bindings
     configureBindings();
   }
