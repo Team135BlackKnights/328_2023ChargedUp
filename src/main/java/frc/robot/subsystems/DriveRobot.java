@@ -14,6 +14,8 @@ public class DriveRobot extends SubsystemBase{
     public CANSparkMax FrontRight = new CANSparkMax(RobotMap.Drive.FR_ID, MotorType.kBrushless);
     public CANSparkMax BackLeft = new CANSparkMax(RobotMap.Drive.BL_ID, MotorType.kBrushless);
     public CANSparkMax BackRight = new CANSparkMax(RobotMap.Drive.BR_ID, MotorType.kBrushless);
+
+
     public DriveRobot(){
         FrontLeft.enableVoltageCompensation(12);
         FrontRight.enableVoltageCompensation(12);
@@ -23,6 +25,7 @@ public class DriveRobot extends SubsystemBase{
         FrontRight.setIdleMode(IdleMode.kCoast);
         BackLeft.setIdleMode(IdleMode.kCoast);
         BackRight.setIdleMode(IdleMode.kCoast); 
+
         MotorControllerGroup left = new MotorControllerGroup(FrontLeft, BackLeft);
         MotorControllerGroup right = new MotorControllerGroup(FrontRight, BackRight);
         tank = new DifferentialDrive(left, right);
