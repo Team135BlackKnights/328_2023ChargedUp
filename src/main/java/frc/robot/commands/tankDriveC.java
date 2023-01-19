@@ -4,12 +4,12 @@ import com.revrobotics.CANSparkMax.IdleMode;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
-import frc.robot.subsystems.DriveRobot;
+import frc.robot.subsystems.TankDriveS;
 
-public class tankDriveC extends CommandBase{
-    private final DriveRobot drive;
+public class TankDriveC extends CommandBase{
+    private final TankDriveS drive;
 
-    public tankDriveC(DriveRobot subsystem) {
+    public TankDriveC(TankDriveS subsystem) {
         // Use addRequirements() here to declare subsystem dependencies.
         drive = subsystem;
         addRequirements(subsystem);

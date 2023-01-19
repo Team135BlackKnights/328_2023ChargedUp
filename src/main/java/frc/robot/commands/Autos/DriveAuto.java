@@ -7,19 +7,19 @@ package frc.robot.commands.Autos;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DriveRobot;
+import frc.robot.subsystems.TankDriveS;
 
 
   public class DriveAuto extends CommandBase {
   Timer timer = new Timer();
-  DriveRobot tankDriveRobot;
+  TankDriveS tankTankDriveS;
   boolean isFinished = false;
   double DriveTime;
 
-  public DriveAuto (DriveRobot m_drive, double i) {
-    tankDriveRobot = m_drive;
+  public DriveAuto (TankDriveS m_drive, double i) {
+    tankTankDriveS = m_drive;
     DriveTime = i;
-    addRequirements(tankDriveRobot);
+    addRequirements(tankTankDriveS);
   }
   public void initialize() {
     timer.start();
@@ -30,13 +30,13 @@ import frc.robot.subsystems.DriveRobot;
     SmartDashboard.putNumber("Auto Timer", Timer.getMatchTime());
     
     if (timer.get() < 5){
-      tankDriveRobot.tankDrive(.5, .5);
+      tankTankDriveS.tankDrive(.5, .5);
     }
     else if (timer.get() < 10){
-      
+      tankTankDriveS.tankDrive(.5, .5);
     }
     else if (timer.get() > DriveTime){
-      tankDriveRobot.tankDrive(0, 0);
+      tankTankDriveS.tankDrive(0, 0);
       isFinished = true;
     }
 

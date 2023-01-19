@@ -8,7 +8,7 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public class DriveRobot extends SubsystemBase{
+public class TankDriveS extends SubsystemBase{
     public DifferentialDrive tank;
     public CANSparkMax FrontLeft = new CANSparkMax(RobotMap.Drive.FL_ID, MotorType.kBrushless);
     public CANSparkMax FrontRight = new CANSparkMax(RobotMap.Drive.FR_ID, MotorType.kBrushless);
@@ -16,7 +16,7 @@ public class DriveRobot extends SubsystemBase{
     public CANSparkMax BackRight = new CANSparkMax(RobotMap.Drive.BR_ID, MotorType.kBrushless);
 
 
-    public DriveRobot(){
+    public TankDriveS(){
         FrontLeft.enableVoltageCompensation(12);
         FrontRight.enableVoltageCompensation(12);
         BackLeft.enableVoltageCompensation(12);
