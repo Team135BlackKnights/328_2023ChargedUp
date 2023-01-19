@@ -19,12 +19,15 @@ public class DriveRobot extends SubsystemBase{
         FrontRight.enableVoltageCompensation(12);
         BackLeft.enableVoltageCompensation(12);
         BackRight.enableVoltageCompensation(12);
+
         FrontLeft.setIdleMode(IdleMode.kCoast);
         FrontRight.setIdleMode(IdleMode.kCoast);
         BackLeft.setIdleMode(IdleMode.kCoast);
-        BackRight.setIdleMode(IdleMode.kCoast); 
+        BackRight.setIdleMode(IdleMode.kCoast);
+
         MotorControllerGroup left = new MotorControllerGroup(FrontLeft, BackLeft);
         MotorControllerGroup right = new MotorControllerGroup(FrontRight, BackRight);
+        
         tank = new DifferentialDrive(left, right);
     }
     public void tankDrive(double left, double right) {
