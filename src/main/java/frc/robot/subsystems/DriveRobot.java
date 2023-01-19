@@ -25,11 +25,7 @@ public class DriveRobot extends SubsystemBase{
         FrontLeft.setIdleMode(IdleMode.kCoast);
         FrontRight.setIdleMode(IdleMode.kCoast);
         BackLeft.setIdleMode(IdleMode.kCoast);
-<<<<<<< HEAD
-        BackRight.setIdleMode(IdleMode.kCoast);
-=======
         BackRight.setIdleMode(IdleMode.kCoast); 
->>>>>>> f92fb7f31dc178acec8658a022139618bb188617
 
         MotorControllerGroup left = new MotorControllerGroup(FrontLeft, BackLeft);
         MotorControllerGroup right = new MotorControllerGroup(FrontRight, BackRight);
