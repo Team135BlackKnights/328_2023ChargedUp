@@ -21,6 +21,10 @@ import edu.wpi.first.wpilibj2.command.button.Trigger;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
+  public static TankDriveS drive = new TankDriveS();
+  private final frc.robot.commands.TankDriveC m_DriveCommand= new TankDriveC(drive);
+  private final frc.robot.commands.Autos.DriveAuto m_autoCommand= new DriveAuto(drive, 2);
+
   public static XboxController XboxController = new XboxController(0);  
   public static TankDriveS TankDriveS = new TankDriveS();
   // Replace with CommandPS4Controller or CommandJoystick if needed
