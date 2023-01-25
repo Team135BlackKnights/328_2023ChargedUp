@@ -25,7 +25,9 @@ public class RobotContainer {
   private final frc.robot.commands.TankDriveC m_DriveCommand= new TankDriveC(drive);
   private final frc.robot.commands.Autos.DriveAuto m_autoCommand= new DriveAuto(drive, 2);
 
-  public static XboxController XboxController = new XboxController(0);  
+  public static XboxController DriveControl = new XboxController(1);
+  public static XboxController ManipControl = new XboxController(2);  
+
   public static TankDriveS TankDriveS = new TankDriveS();
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
