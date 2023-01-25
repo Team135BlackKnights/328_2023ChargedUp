@@ -27,7 +27,10 @@ public class TankDriveC extends CommandBase{
 double leftSpeed = RobotContainer.XboxController.getLeftY();
 double rightSpeed = RobotContainer.XboxController.getRightY();
 
-
+double finefowardSpeed = RobotContainer.XboxController.getPOV();
+double finebackwardSpeed = RobotContainer.XboxController.getPOV();
+double fineleftSpeed = RobotContainer.XboxController.getPOV();
+double finerightSpeed = RobotContainer.XboxController.getPOV();
 
    drive.tankDrive(-leftSpeed, rightSpeed);
 }
