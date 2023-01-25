@@ -27,7 +27,6 @@ public class IntakeEx1C extends CommandBase{
     }
 
     if (RobotContainer.ManipControl.getPOV()== 0) {
-      //runs if something is pressed on the dpad
         intake.IntakeUpDown.set(.3);
     } else if (RobotContainer.ManipControl.getPOV()== 180) {
         intake.IntakeUpDown.set(-.3);
