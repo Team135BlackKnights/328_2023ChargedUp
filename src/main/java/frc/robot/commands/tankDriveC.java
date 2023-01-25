@@ -27,24 +27,19 @@ public class TankDriveC extends CommandBase{
 double leftSpeed = RobotContainer.DriveControl.getLeftY();
 double rightSpeed = RobotContainer.DriveControl.getRightY();
 
-double finefowardSpeed = RobotContainer.DriveControl.getPOV(0);
-double finebackwardSpeed = RobotContainer.DriveControl.getPOV(180);
-double fineleftSpeed = RobotContainer.DriveControl.getPOV(270);
-double finerightSpeed = RobotContainer.DriveControl.getPOV(90);
-
-if (RobotContainer.DriveControl.getPOV()!=-1) {
-  drive.tankDrive(-leftSpeed*.5, rightSpeed*.5);
+if (RobotContainer.DriveControl.getPOV() == 0) {
+  drive.tankDrive(-0.7, 0.7);
 }
-
+else if (RobotContainer.DriveControl.getPOV() == 90) {
+  drive.tankDrive(-0.5, -0.5);
+}
+else if (RobotContainer.DriveControl.getPOV() == 270) {
+  drive.tankDrive(0.5, 0.5);
+}
 else {
   drive.tankDrive(-leftSpeed, rightSpeed);
 }
   }
-
-@Override
-public void end(boolean interrupted) {
-  drive.tankDrive(0, 0);
-}
 @Override
   public boolean isFinished() {
     return false;
