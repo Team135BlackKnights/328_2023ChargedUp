@@ -33,13 +33,12 @@ double fineleftSpeed = RobotContainer.DriveControl.getPOV(270);
 double finerightSpeed = RobotContainer.DriveControl.getPOV(90);
 
 if (RobotContainer.DriveControl.getPOV()!=-1) {
-  public double constant = 0.7;
+  drive.tankDrive(-leftSpeed*.5, rightSpeed*.5);
 }
 
 else {
-  public double constant = 1;
+  drive.tankDrive(-leftSpeed, rightSpeed);
 }
-   drive.tankDrive(-leftSpeed, rightSpeed);
   }
 
 @Override
