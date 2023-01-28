@@ -11,9 +11,9 @@ public interface RobotMap {
 
         public interface Intake {
             public final static int
-          Sol1_ID = 10,
-          Sol2_ID = 9,
-          Sol3_ID = 8,
+          INTL_ID = 10,
+          INTR_ID = 9,
+          INTU_ID = 8,
           Sol4_ID = 7;
           
 

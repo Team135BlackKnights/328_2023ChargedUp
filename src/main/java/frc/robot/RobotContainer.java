@@ -29,11 +29,11 @@ public class RobotContainer {
   public static IntakeEx1S IntakeEx1S = new IntakeEx1S();
   private final frc.robot.commands.Autos.DriveAuto m_autoCommand= new DriveAuto(drive, 2);
 
-  public static XboxController manipController = new XboxController(0); 
-  public static XboxController driveController = new XboxController(1);
+  public static XboxController ManipControl = new XboxController(0); 
+  public static XboxController DriveControl = new XboxController(1);
 
     public static intakeS _intakeS = new intakeS(); 
-  public static TankDriveS TankDriveS = new TankDriveS();
+  public static TankDriveS tankDriveS = new TankDriveS();
   
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
@@ -42,7 +42,7 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
        _intakeS.setDefaultCommand(new IntakeC(_intakeS));
-    TankDriveS.setDefaultCommand(new tankDriveC(TankDriveS));
+    tankDriveS.setDefaultCommand(new tankDriveC(tankDriveS));
     IntakeEx1S.setDefaultCommand(new IntakeEx1C(IntakeEx1S));
     // Configure the trigger bindings
     configureBindings();
