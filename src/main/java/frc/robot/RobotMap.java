@@ -6,12 +6,18 @@ public interface RobotMap {
            FR_ID = 14,
            BL_ID = 11,
            BR_ID = 13;
+
     }
- 
-    public interface Intake {
-        public final static int
-           INTL_ID = 20,
-           INTR_ID = 21,
-           INTU_ID = 22;
+
+        public interface Intake {
+            public final static int
+          INTL_ID = 10,
+          INTR_ID = 9,
+          INTU_ID = 8,
+          Sol4_ID = 7;
+          
+
+        
     }
 }
+
