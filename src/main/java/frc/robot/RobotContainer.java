@@ -6,7 +6,9 @@ package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos.DriveAuto;
-import frc.robot.commands.TankDriveC;
+import frc.robot.commands.IntakeEx1C;
+import frc.robot.commands.tankDriveC;
+import frc.robot.subsystems.IntakeEx1S;
 import frc.robot.subsystems.TankDriveS;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -24,7 +26,7 @@ import frc.robot.subsystems.intakeS;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   public static TankDriveS drive = new TankDriveS();
-  private final frc.robot.commands.TankDriveC m_DriveCommand= new TankDriveC(drive);
+  public static IntakeEx1S IntakeEx1S = new IntakeEx1S();
   private final frc.robot.commands.Autos.DriveAuto m_autoCommand= new DriveAuto(drive, 2);
 
   public static XboxController manipController = new XboxController(0); 
@@ -40,7 +42,8 @@ public class RobotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
        _intakeS.setDefaultCommand(new IntakeC(_intakeS));
-    TankDriveS.setDefaultCommand(new TankDriveC(TankDriveS));
+    TankDriveS.setDefaultCommand(new tankDriveC(TankDriveS));
+    IntakeEx1S.setDefaultCommand(new IntakeEx1C(IntakeEx1S));
     // Configure the trigger bindings
     configureBindings();
   }

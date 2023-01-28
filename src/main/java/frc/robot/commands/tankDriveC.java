@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.TankDriveS;
 
-public class TankDriveC extends CommandBase{
+public class tankDriveC extends CommandBase{
     private final TankDriveS drive;
 
     public TankDriveC(TankDriveS subsystem) {
@@ -27,12 +27,19 @@ public class TankDriveC extends CommandBase{
 double leftSpeed = RobotContainer.driveController.getLeftY();
 double rightSpeed = RobotContainer.driveController.getRightY();
 
-   drive.tankDrive(-leftSpeed, rightSpeed);
+if (RobotContainer.DriveControl.getPOV() == 0) {
+  drive.tankDrive(-0.7, 0.7);
 }
-@Override
-public void end(boolean interrupted) {
-  drive.tankDrive(0, 0);
+else if (RobotContainer.DriveControl.getPOV() == 90) {
+  drive.tankDrive(-0.5, -0.5);
 }
+else if (RobotContainer.DriveControl.getPOV() == 270) {
+  drive.tankDrive(0.5, 0.5);
+}
+else {
+  drive.tankDrive(-leftSpeed, rightSpeed);
+}
+  }
 @Override
   public boolean isFinished() {
     return false;
