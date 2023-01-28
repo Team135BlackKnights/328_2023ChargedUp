@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.IntakeC;
+import frc.robot.subsystems.intakeS;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -25,14 +27,19 @@ public class RobotContainer {
   private final frc.robot.commands.TankDriveC m_DriveCommand= new TankDriveC(drive);
   private final frc.robot.commands.Autos.DriveAuto m_autoCommand= new DriveAuto(drive, 2);
 
-  public static XboxController XboxController = new XboxController(0);  
+  public static XboxController manipController = new XboxController(0); 
+  public static XboxController driveController = new XboxController(1);
+
+    public static intakeS _intakeS = new intakeS(); 
   public static TankDriveS TankDriveS = new TankDriveS();
+  
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+       _intakeS.setDefaultCommand(new IntakeC(_intakeS));
     TankDriveS.setDefaultCommand(new TankDriveC(TankDriveS));
     // Configure the trigger bindings
     configureBindings();
