@@ -13,8 +13,7 @@ public interface RobotMap {
             public final static int
           INTL_ID = 10,
           INTR_ID = 9,
-          INTU_ID = 8,
-          Sol4_ID = 7;
+          INTU_ID = 8;
           
 
         

@@ -1,39 +1,39 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 import frc.robot.subsystems.intakeS;
 public class IntakeC extends CommandBase {
     
     public final intakeS intake;
     boolean isFinished = false;
+  double motorSpeedHandling  = .3;
 
     public IntakeC(intakeS subsystem) {
         intake = subsystem;
         addRequirements(subsystem);
     }
-    
+    public void initialize(){
+      intakeS.IntakeEncoderReset();
 
- public void execute() {        
-  
-    if (intakeS.Solenoid1.get() == Value.kForward ){
-        intakeS.Solenoid1.set(Value.kReverse);
-      } else if (intakeS.Solenoid1.get() == Value.kReverse) {
-        intakeS.Solenoid1.set(Value.kForward);
-      } else {
-        intakeS.Solenoid1.set(Value.kReverse);
+      isFinished = false;
+    }
+
+    public void execute(){
+      if (RobotContainer.ManipControl.getRawButtonPressed(0)) {
+        //to grab cube
+        while (intakeS.ManipLeftEncoder.getPosition() ) {
+          
+        }
       }
-
-
-      if (intakeS.Solenoid2.get() == Value.kForward ){
-        intakeS.Solenoid2.set(Value.kReverse);
-      } else if (intakeS.Solenoid2.get() == Value.kReverse) {
-        intakeS.Solenoid2.set(Value.kForward);
-      } else {
-        intakeS.Solenoid2.set(Value.kReverse);
+ 
+      if (RobotContainer.ManipControl.getRawButtonPressed(1)) {
+      // to grab cone
       }
-      isFinished = true;
-
+      if (RobotContainer.ManipControl.getRawButtonPressed(2)){
+        //release
+      }
 
 }
 }

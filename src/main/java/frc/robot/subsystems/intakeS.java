@@ -4,11 +4,30 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
+import edu.wpi.first.wpilibj.Encoder;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class intakeS extends SubsystemBase {
-    
-     public static DoubleSolenoid Solenoid1 = new DoubleSolenoid(2, PneumaticsModuleType.REVPH, RobotMap.Intake.Sol1_ID, RobotMap.Intake.Sol2_ID);
-     public static DoubleSolenoid Solenoid2 = new DoubleSolenoid(2, PneumaticsModuleType.REVPH, RobotMap.Intake.Sol3_ID, RobotMap.Intake.Sol4_ID);
+     CANSparkMax ManipLeft = new CANSparkMax(RobotMap.Intake.INTL_ID, MotorType.kBrushless);
+     CANSparkMax ManipRight = new CANSparkMax(RobotMap.Intake.INTR_ID, MotorType.kBrushless);
+     CANSparkMax ManipUp = new CANSparkMax(RobotMap.Intake.INTU_ID, MotorType.kBrushless); 
+     public static RelativeEncoder ManipLeftEncoder, ManipRightEncoder, ManipUpEncoder; 
+
+     public intakeS(){
+          ManipLeftEncoder = ManipLeft.getEncoder();
+          ManipRightEncoder = ManipLeft.getEncoder();
+          ManipUpEncoder = ManipUp.getEncoder();
+
+     }
+     public static void IntakeEncoderReset() {
+          ManipLeftEncoder.setPosition(0);
+          ManipRightEncoder.setPosition(0);
+          ManipUpEncoder.setPosition(0);
+     
+     }
+
+
 
 }
-

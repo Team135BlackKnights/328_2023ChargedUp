@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.TankDriveS;
 
-public class ankDriveC extends CommandBase{
+public class TankDriveC extends CommandBase{
     private final TankDriveS drive;
 
     public TankDriveC(TankDriveS subsystem) {
@@ -24,8 +24,8 @@ public class ankDriveC extends CommandBase{
   }
   @Override
   public void execute() {
-double leftSpeed = RobotContainer.driveController.getLeftY();
-double rightSpeed = RobotContainer.driveController.getRightY();
+double leftSpeed = RobotContainer.DriveControl.getLeftY();
+double rightSpeed = RobotContainer.DriveControl.getRightY();
 
 if (RobotContainer.DriveControl.getPOV() == 0) {
   drive.tankDrive(-0.7, 0.7);
