@@ -24,33 +24,24 @@ boolean holdSomething = false;
 
     public void execute(){
       SmartDashboard.putBoolean("Holding Something:", holdSomething);
-      SmartDashboard.putNumber("Left Claw:", intakeS.ManipLeftEncoder.getPosition());
-      SmartDashboard.putNumber("Right Claw",intakeS.ManipRightEncoder.getPosition());
 
       if (RobotContainer.ManipControl.getRawButtonPressed(0) & holdSomething == false) {
-        //to grab cube
         holdSomething = false;
-        while (intakeS.ManipLeftEncoder.getPosition() == 30 ) {
-          intake.LeftClaw.set(motorSpeedHandling);
-          intake.RightClaw.set(-motorSpeedHandling);          
-
+        while (intakeS.ManipUpEncoder.getPosition() == 30 ) {
+        intake.InAndOut.set(motorSpeedHandling);
         }
       }
  
       if (RobotContainer.ManipControl.getRawButtonPressed(1) & holdSomething == false) {
-      // to grab cone
       holdSomething = false;
-      while (intakeS.ManipLeftEncoder.getPosition() == 60 ) {
-        intake.LeftClaw.set(motorSpeedHandling);
-        intake.RightClaw.set(-motorSpeedHandling);          
+      while (intakeS.ManipUpEncoder.getPosition() == 60 ) {
+        intake.InAndOut.set(motorSpeedHandling);       
 
       }
       }
       if (RobotContainer.ManipControl.getRawButtonPressed(2) & holdSomething == true){
-        //release
-        while (intakeS.ManipLeftEncoder.getPosition() == 0) {
-          intake.LeftClaw.set(-motorSpeedHandling);
-          intake.RightClaw.set(motorSpeedHandling);
+        while (intakeS.ManipUpEncoder.getPosition() == 0) {
+          intake.InAndOut.set(motorSpeedHandling);
           
         }
         holdSomething = true;

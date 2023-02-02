@@ -7,20 +7,16 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class intakeS extends SubsystemBase {
-     public CANSparkMax LeftClaw = new CANSparkMax(RobotMap.Intake.INTL_ID, MotorType.kBrushless);
-     public CANSparkMax RightClaw = new CANSparkMax(RobotMap.Intake.INTR_ID, MotorType.kBrushless);
-     public CANSparkMax ArmUp = new CANSparkMax(RobotMap.Intake.INTU_ID, MotorType.kBrushless); 
-     public static RelativeEncoder ManipLeftEncoder, ManipRightEncoder, ManipUpEncoder; 
+     public CANSparkMax LeftWheels = new CANSparkMax(RobotMap.Intake.INTL_ID, MotorType.kBrushless);
+     public CANSparkMax RightWheels = new CANSparkMax(RobotMap.Intake.INTR_ID, MotorType.kBrushless);
+     public CANSparkMax InAndOut = new CANSparkMax(RobotMap.Intake.INTU_ID, MotorType.kBrushless); 
+     public static RelativeEncoder ManipUpEncoder; 
 
      public intakeS(){
-          ManipLeftEncoder = LeftClaw .getEncoder();
-          ManipRightEncoder = RightClaw.getEncoder();
-          ManipUpEncoder = ArmUp.getEncoder();
+          ManipUpEncoder = InAndOut.getEncoder();
 
      }
      public static void IntakeEncoderReset() {
-          ManipLeftEncoder.setPosition(0);
-          ManipRightEncoder.setPosition(0);
           ManipUpEncoder.setPosition(0);
      
      }
