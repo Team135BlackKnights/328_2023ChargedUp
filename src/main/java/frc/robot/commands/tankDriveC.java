@@ -24,8 +24,8 @@ public class TankDriveC extends CommandBase{
   }
   @Override
   public void execute() {
-double leftSpeed = RobotContainer.driverController.getLeftY();
-double rightSpeed = RobotContainer.driverController.getRightY();
+double leftSpeed = RobotContainer.DriveControl.getLeftY();
+double rightSpeed = RobotContainer.DriveControl.getRightY();
 
 if (RobotContainer.DriveControl.getPOV() == 0) {
   drive.tankDrive(-0.7, 0.7);
