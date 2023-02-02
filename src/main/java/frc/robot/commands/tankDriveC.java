@@ -1,7 +1,7 @@
 package frc.robot.commands;
 
 import com.revrobotics.CANSparkMax.IdleMode;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.TankDriveS;
@@ -24,8 +24,8 @@ public class TankDriveC extends CommandBase{
   }
   @Override
   public void execute() {
-double leftSpeed = RobotContainer.DriveControl.getLeftY();
-double rightSpeed = RobotContainer.DriveControl.getRightY();
+double leftSpeed = RobotContainer.driverController.getLeftY();
+double rightSpeed = RobotContainer.driverController.getRightY();
 
 if (RobotContainer.DriveControl.getPOV() == 0) {
   drive.tankDrive(-0.7, 0.7);
@@ -39,9 +39,7 @@ else if (RobotContainer.DriveControl.getPOV() == 270) {
 else {
   drive.tankDrive(-leftSpeed, rightSpeed);
 }
-SmartDashboard.putNumber("Left Motor",leftSpeed);
-SmartDashboard.putNumber("Right Motor", rightSpeed);
-}
+  }
 @Override
   public boolean isFinished() {
     return false;
