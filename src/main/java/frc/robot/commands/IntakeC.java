@@ -25,27 +25,38 @@ boolean holdSomething = false;
     public void execute(){
       SmartDashboard.putBoolean("Holding Something:", holdSomething);
 
-      if (RobotContainer.ManipControl.getRawButtonPressed(0) & holdSomething == false) {
+      if (RobotContainer.ManipControl.getAButton() & holdSomething == false) {
         holdSomething = false;
         while (intakeS.ManipUpEncoder.getPosition() == 30 ) {
         intake.InAndOut.set(motorSpeedHandling);
         }
       }
  
-      if (RobotContainer.ManipControl.getRawButtonPressed(1) & holdSomething == false) {
+      if (RobotContainer.ManipControl.getAButton() & holdSomething == false) {
       holdSomething = false;
       while (intakeS.ManipUpEncoder.getPosition() == 60 ) {
         intake.InAndOut.set(motorSpeedHandling);       
 
+      } 
       }
-      }
-      if (RobotContainer.ManipControl.getRawButtonPressed(2) & holdSomething == true){
+      if (RobotContainer.ManipControl.getAButton() & holdSomething == true){
         while (intakeS.ManipUpEncoder.getPosition() == 0) {
           intake.InAndOut.set(motorSpeedHandling);
           
         }
         holdSomething = true;
       }
+
+      if (RobotContainer.DriveControl.getPOV() == true) { 
+
+      }
+      else if (RobotContainer.DriveControl.getPOV() == true) { 
+
+      }
+      else (RobotContainer.DriveControl.getRightBumperReleased() == false) { 
+
+      }
+
 isFinished = true;
 }
 }

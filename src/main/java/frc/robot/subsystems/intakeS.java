@@ -14,11 +14,9 @@ public class intakeS extends SubsystemBase {
 
      public intakeS(){
           ManipUpEncoder = InAndOut.getEncoder();
-
      }
      public static void IntakeEncoderReset() {
           ManipUpEncoder.setPosition(0);
-     
      }
 
 
