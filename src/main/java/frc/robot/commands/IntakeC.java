@@ -47,14 +47,17 @@ boolean holdSomething = false;
         holdSomething = true;
       }
 
-      if (RobotContainer.DriveControl.getPOV() == true) { 
-
+      if (RobotContainer.DriveControl.getRightBumperPressed() == true) { 
+          intake.LeftWheels.set(0.5);
+          intake.RightWheels.set(-0.5);
       }
-      else if (RobotContainer.DriveControl.getPOV() == true) { 
-
+      else if (RobotContainer.DriveControl.getLeftBumperPressed() == true) { 
+        intake.LeftWheels.set(-0.5);
+        intake.RightWheels.set(0.5);
       }
-      else (RobotContainer.DriveControl.getRightBumperReleased() == false) { 
-
+      else { 
+        intake.LeftWheels.set(0);
+        intake.RightWheels.set(0);
       }
 
 isFinished = true;
