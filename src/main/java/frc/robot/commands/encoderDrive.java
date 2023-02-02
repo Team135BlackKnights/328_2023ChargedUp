@@ -1,4 +1,4 @@
-package frc.robot.commands.AutoCommands;
+package frc.robot.commands;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TankDriveS;
@@ -6,7 +6,7 @@ import java.lang.Math;
 public class encoderDrive extends CommandBase {
     //Variable declaration
     TankDriveS drive;
-    double inches, encAvg, desired;
+    double inches, encAvg, desired, CPR;
     PIDController PiController;
     
     //checks to see if command is run all the way through before being called again, prevents being called 3 trillion times
@@ -19,14 +19,15 @@ public class encoderDrive extends CommandBase {
     }
     @Override
     public void initialize() {
-     
+        CPR = 1/42;
+
         isFinished = false;
         drive.resetEncoders();
     }
     public void execute() {
         // finds average of degree measures
         final double gearRatio = 8.46;
-        final double wheelDiameter = 6;
+        final double wheelDiameter = 6*Math.PI;
         encAvg = (TankDriveS.lFront.getPosition() + TankDriveS.lBack.getPosition() - TankDriveS.rFront.getPosition() - TankDriveS.rBack.getPosition())/4;
         double ratioEnc = encAvg*gearRatio;
 
