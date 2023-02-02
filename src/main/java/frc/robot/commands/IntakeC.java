@@ -8,6 +8,7 @@ import frc.robot.subsystems.intakeS;
 public class IntakeC extends CommandBase {
     
     public final intakeS intake;
+    // a boolean is a true false statement
     boolean isFinished = false;
   double motorSpeedHandling  = .3;
 boolean holdSomething = false; 
@@ -29,31 +30,35 @@ boolean holdSomething = false;
         holdSomething = false;
         while (intakeS.ManipUpEncoder.getPosition() == 30 ) {
         intake.InAndOut.set(motorSpeedHandling);
+        //closes the arms to a 30 degree angle
         }
       }
  
-      if (RobotContainer.ManipControl.getAButton() & holdSomething == false) {
+      if (RobotContainer.ManipControl.getBButton() & holdSomething == false) {
       holdSomething = false;
       while (intakeS.ManipUpEncoder.getPosition() == 60 ) {
-        intake.InAndOut.set(motorSpeedHandling);       
-
+        intake.InAndOut.set(motorSpeedHandling); 
+             //closes the arms to a 60 degree angle
       } 
       }
-      if (RobotContainer.ManipControl.getAButton() & holdSomething == true){
+      if (RobotContainer.ManipControl.getYButton() & holdSomething == true){
         while (intakeS.ManipUpEncoder.getPosition() == 0) {
           intake.InAndOut.set(motorSpeedHandling);
-          
+          //this is when the arms are open fully
         }
         holdSomething = true;
       }
+      
 
       if (RobotContainer.DriveControl.getRightBumperPressed() == true) { 
           intake.LeftWheels.set(0.5);
           intake.RightWheels.set(-0.5);
+          //Takes stuff in with wheels
       }
       else if (RobotContainer.DriveControl.getLeftBumperPressed() == true) { 
         intake.LeftWheels.set(-0.5);
         intake.RightWheels.set(0.5);
+        //Pushes things out with wheels
       }
       else { 
         intake.LeftWheels.set(0);

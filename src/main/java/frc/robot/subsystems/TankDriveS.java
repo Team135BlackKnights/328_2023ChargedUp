@@ -9,20 +9,24 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public class TankDriveS extends SubsystemBase{
+public class TankDriveS extends SubsystemBase{ 
+    //motors for drive
     public DifferentialDrive tank;
     public CANSparkMax FrontLeft = new CANSparkMax(RobotMap.Drive.FL_ID, MotorType.kBrushless);
     public CANSparkMax FrontRight = new CANSparkMax(RobotMap.Drive.FR_ID, MotorType.kBrushless);
     public CANSparkMax BackLeft = new CANSparkMax(RobotMap.Drive.BL_ID, MotorType.kBrushless);
     public CANSparkMax BackRight = new CANSparkMax(RobotMap.Drive.BR_ID, MotorType.kBrushless);
 
-    public Encoder LeftSide, RightSide;
-    public static RelativeEncoder lFront, lBack, rFront, rBack;
-    public TankDriveS(){
+    public Encoder LeftSide, RightSide; 
+    //connects encoders to drive motorgroups
+    public static RelativeEncoder lFront, lBack, rFront, rBack;  
+    public TankDriveS(){  
+    //connects encoders to drive motors
         lFront= FrontLeft.getEncoder();
         lBack = BackLeft.getEncoder();
         rFront= FrontRight.getEncoder();
         rBack = BackRight.getEncoder();
+
         FrontLeft.enableVoltageCompensation(12);
         FrontRight.enableVoltageCompensation(12);
         BackLeft.enableVoltageCompensation(12);
@@ -33,8 +37,9 @@ public class TankDriveS extends SubsystemBase{
         BackLeft.setIdleMode(IdleMode.kCoast);
         BackRight.setIdleMode(IdleMode.kCoast); 
 
-        MotorControllerGroup left = new MotorControllerGroup(FrontLeft, BackLeft);
+        MotorControllerGroup left = new MotorControllerGroup(FrontLeft, BackLeft); 
         MotorControllerGroup right = new MotorControllerGroup(FrontRight, BackRight);
+    //these are the motorgroups
         
         tank = new DifferentialDrive(left, right);
     }
@@ -44,6 +49,7 @@ public class TankDriveS extends SubsystemBase{
         
     }
     public void resetEncoders(){
+        //resets encoders to 0 when code is started up
         lFront.setPosition(0);
         lBack.setPosition(0);
         rFront.setPosition(0);

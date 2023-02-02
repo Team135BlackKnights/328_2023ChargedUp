@@ -20,7 +20,7 @@ public class encoderDrive extends CommandBase {
     @Override
     public void initialize() {
         CPR = 1/42;
-
+//the encoders only go 42 revolutions for some reason
         isFinished = false;
         drive.resetEncoders();
     }
