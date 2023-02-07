@@ -6,4 +6,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.LiftS;
 
-public class LiftC extends CommandBase {}
+public class LiftC extends CommandBase {
+    
+}

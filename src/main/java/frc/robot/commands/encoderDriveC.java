@@ -3,7 +3,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.TankDriveS;
 import java.lang.Math;
-public class encoderDrive extends CommandBase {
+public class encoderDriveC extends CommandBase {
     //Variable declaration
     TankDriveS drive;
     double inches, encAvg, desired, CPR;
@@ -12,7 +12,7 @@ public class encoderDrive extends CommandBase {
     //checks to see if command is run all the way through before being called again, prevents being called 3 trillion times
     public boolean isFinished;
 //new encoder drive
-    public encoderDrive(TankDriveS subsystem, double inches) {
+    public encoderDriveC(TankDriveS subsystem, double inches) {
         drive = subsystem;
         desired = inches;
         addRequirements(drive);
