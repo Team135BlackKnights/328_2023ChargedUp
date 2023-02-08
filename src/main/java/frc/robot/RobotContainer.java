@@ -5,14 +5,14 @@
 package frc.robot;
 
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Autos.DriveAuto;
-import frc.robot.commands.TankDriveC;
-import frc.robot.subsystems.TankDriveS;
+import frc.robot.commands.Autos.driveAuto;
+import frc.robot.commands.tankDriveC;
+import frc.robot.subsystems.tankDriveS;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.commands.IntakeC;
+import frc.robot.commands.intakeC;
 import frc.robot.subsystems.intakeS;
 
 /**
@@ -21,25 +21,25 @@ import frc.robot.subsystems.intakeS;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and trigger mappings) should be declared here.
  */
-public class RobotContainer {
+public class robotContainer {
   // The robot's subsystems and commands are defined here...
-  public static TankDriveS drive = new TankDriveS();
-  private final frc.robot.commands.Autos.DriveAuto m_autoCommand= new DriveAuto(drive, 2);
+  public static tankDriveS drive = new tankDriveS();
+  private final frc.robot.commands.Autos.driveAuto m_autoCommand= new driveAuto(drive, 2);
 
   public static XboxController ManipControl = new XboxController(0); 
   public static XboxController DriveControl = new XboxController(1);
 
     public static intakeS _intakeS = new intakeS(); 
-  public static TankDriveS tankDriveS = new TankDriveS();
+  public static tankDriveS tankDriveS = new tankDriveS();
   
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController m_driverController =
+  private final CommandXboxController driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
-       _intakeS.setDefaultCommand(new IntakeC(_intakeS));
-    tankDriveS.setDefaultCommand(new TankDriveC(tankDriveS));
+  public robotContainer() {
+       _intakeS.setDefaultCommand(new intakeC(_intakeS));
+    tankDriveS.setDefaultCommand(new tankDriveC(tankDriveS));
     
     // Configure the trigger bindings
     configureBindings();

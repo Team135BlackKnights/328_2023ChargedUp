@@ -4,23 +4,23 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotMap;
+import frc.robot.robotMap;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public class TankDriveS extends SubsystemBase{ 
+public class tankDriveS extends SubsystemBase{ 
     //motors for drive
     public DifferentialDrive tank;
-    public CANSparkMax FrontLeft = new CANSparkMax(RobotMap.Drive.FL_ID, MotorType.kBrushless);
-    public CANSparkMax FrontRight = new CANSparkMax(RobotMap.Drive.FR_ID, MotorType.kBrushless);
-    public CANSparkMax BackLeft = new CANSparkMax(RobotMap.Drive.BL_ID, MotorType.kBrushless);
-    public CANSparkMax BackRight = new CANSparkMax(RobotMap.Drive.BR_ID, MotorType.kBrushless);
+    public CANSparkMax FrontLeft = new CANSparkMax(robotMap.Drive.FL_ID, MotorType.kBrushless);
+    public CANSparkMax FrontRight = new CANSparkMax(robotMap.Drive.FR_ID, MotorType.kBrushless);
+    public CANSparkMax BackLeft = new CANSparkMax(robotMap.Drive.BL_ID, MotorType.kBrushless);
+    public CANSparkMax BackRight = new CANSparkMax(robotMap.Drive.BR_ID, MotorType.kBrushless);
 
     public Encoder LeftSide, RightSide; 
     //connects encoders to drive motorgroups
     public static RelativeEncoder lFront, lBack, rFront, rBack;  
-    public TankDriveS(){  
+    public tankDriveS(){  
     //connects encoders to drive motors
         lFront= FrontLeft.getEncoder();
         lBack = BackLeft.getEncoder();

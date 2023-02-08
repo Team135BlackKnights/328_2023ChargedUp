@@ -7,16 +7,16 @@ package frc.robot.commands.Autos;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.TankDriveS;
+import frc.robot.subsystems.tankDriveS;
 
 
-  public class DriveAuto extends CommandBase {
+  public class driveAuto extends CommandBase {
   Timer timer = new Timer();
-  TankDriveS tankTankDriveS;
+  tankDriveS tankTankDriveS;
   boolean isFinished = false;
   double DriveTime;
 
-  public DriveAuto (TankDriveS m_drive, double i) {
+  public driveAuto (tankDriveS m_drive, double i) {
     tankTankDriveS = m_drive;
     DriveTime = i;
     addRequirements(tankTankDriveS);

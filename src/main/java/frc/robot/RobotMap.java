@@ -1,5 +1,5 @@
 package frc.robot;
-public interface RobotMap {
+public interface robotMap {
     public interface Drive {
         public final static int 
            FL_ID = 10,

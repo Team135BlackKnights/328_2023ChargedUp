@@ -3,13 +3,13 @@ package frc.robot.commands;
 import com.revrobotics.CANSparkMax.IdleMode;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotContainer;
-import frc.robot.subsystems.TankDriveS;
+import frc.robot.robotContainer;
+import frc.robot.subsystems.tankDriveS;
 
-public class TankDriveC extends CommandBase{
-    private final TankDriveS drive;
+public class tankDriveC extends CommandBase{
+    private final tankDriveS drive;
 
-    public TankDriveC(TankDriveS subsystem) {
+    public tankDriveC(tankDriveS subsystem) {
         // Use addRequirements() here to declare subsystem dependencies.
         drive = subsystem;
         addRequirements(subsystem);
@@ -24,16 +24,16 @@ public class TankDriveC extends CommandBase{
   }
   @Override
   public void execute() {
-double leftSpeed = RobotContainer.DriveControl.getLeftY();
-double rightSpeed = RobotContainer.DriveControl.getRightY();
+double leftSpeed = robotContainer.DriveControl.getLeftY();
+double rightSpeed = robotContainer.DriveControl.getRightY();
 
-if (RobotContainer.DriveControl.getPOV() == 0) {
+if (robotContainer.DriveControl.getPOV() == 0) {
   drive.tankDrive(-0.7, 0.7);
 }
-else if (RobotContainer.DriveControl.getPOV() == 90) {
+else if (robotContainer.DriveControl.getPOV() == 90) {
   drive.tankDrive(-0.5, -0.5);
 }
-else if (RobotContainer.DriveControl.getPOV() == 270) {
+else if (robotContainer.DriveControl.getPOV() == 270) {
   drive.tankDrive(0.5, 0.5);
 }
 else {
