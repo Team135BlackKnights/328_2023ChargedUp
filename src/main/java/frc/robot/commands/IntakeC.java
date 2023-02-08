@@ -10,7 +10,7 @@ public class intakeC extends CommandBase {
     public final intakeS intake;
     // a boolean is a true false statement
     boolean isFinished = false;
-  double motorSpeedHandling  = .3;
+  double motorSpeedHandling  = .2;
 boolean holdSomething = false; 
     public intakeC(intakeS subsystem) {
         intake = subsystem;
@@ -26,36 +26,32 @@ boolean holdSomething = false;
     public void execute(){
       SmartDashboard.putBoolean("Holding Something:", holdSomething);
 
-      if (robotContainer.ManipControl.getAButton() & holdSomething == false) {
-        holdSomething = false;
-        while (intakeS.ManipUpEncoder.getPosition() == 30 ) {
-        intake.InAndOut.set(motorSpeedHandling);
+      if (robotContainer.ManipControl.getAButton() == true) {
+        //while (intakeS.ManipUpEncoder.getPosition() != 30/42 ) {
+        //intake.InAndOut.set(motorSpeedHandling);
         //closes the arms to a 30 degree angle
-        }
+        intake.InAndOut.set(-motorSpeedHandling);
+        
       }
  
-      if (robotContainer.ManipControl.getBButton() & holdSomething == false) {
-      holdSomething = false;
-      while (intakeS.ManipUpEncoder.getPosition() == 60 ) {
-        intake.InAndOut.set(motorSpeedHandling); 
+      else if (robotContainer.ManipControl.getBButton() == true) {
+      //holdSomething = false;
+     // while (intakeS.ManipUpEncoder.getPosition() != 60/42 ) {
+        //intake.InAndOut.set(motorSpeedHandling); 
              //closes the arms to a 60 degree angle
-      } 
-      }
-      if (robotContainer.ManipControl.getYButton() & holdSomething == true){
-        while (intakeS.ManipUpEncoder.getPosition() == 0) {
-          intake.InAndOut.set(motorSpeedHandling);
-          //this is when the arms are open fully
-        }
-        holdSomething = true;
-      }
+             intake.InAndOut.set(motorSpeedHandling);
       
+     }
+      else {
+        intake.InAndOut.set(0);
+      }
 
-      if (robotContainer.DriveControl.getRightBumperPressed() == true) { 
+      if (robotContainer.ManipControl.getRightBumper() == true) { 
           intake.LeftWheels.set(0.5);
           intake.RightWheels.set(-0.5);
           //Takes stuff in with wheels
       }
-      else if (robotContainer.DriveControl.getLeftBumperPressed() == true) { 
+      else if (robotContainer.ManipControl.getLeftBumper() == true) { 
         intake.LeftWheels.set(-0.5);
         intake.RightWheels.set(0.5);
         //Pushes things out with wheels

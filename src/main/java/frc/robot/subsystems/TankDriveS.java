@@ -37,11 +37,11 @@ public class tankDriveS extends SubsystemBase{
         BackLeft.setIdleMode(IdleMode.kCoast);
         BackRight.setIdleMode(IdleMode.kCoast); 
 
-        MotorControllerGroup left = new MotorControllerGroup(FrontLeft, BackLeft); 
-        MotorControllerGroup right = new MotorControllerGroup(FrontRight, BackRight);
+        MotorControllerGroup leftMotors = new MotorControllerGroup(FrontLeft, BackLeft); 
+        MotorControllerGroup rightMotors = new MotorControllerGroup(FrontRight, BackRight);
     //these are the motorgroups
         
-        tank = new DifferentialDrive(left, right);
+        tank = new DifferentialDrive(leftMotors, rightMotors);
     }
     public void tankDrive(double left, double right) {
         tank.tankDrive(left, right);

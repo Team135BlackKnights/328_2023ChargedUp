@@ -4,7 +4,7 @@
 
 package frc.robot;
 
-import frc.robot.Constants.OperatorConstants;
+//import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos.driveAuto;
 import frc.robot.commands.tankDriveC;
 import frc.robot.subsystems.tankDriveS;
@@ -23,8 +23,8 @@ import frc.robot.subsystems.intakeS;
  */
 public class robotContainer {
   // The robot's subsystems and commands are defined here...
-  public static tankDriveS drive = new tankDriveS();
-  private final frc.robot.commands.Autos.driveAuto m_autoCommand= new driveAuto(drive, 2);
+  //public static tankDriveS drive = new tankDriveS();
+  private final frc.robot.commands.Autos.driveAuto m_autoCommand= new driveAuto(tankDriveS, 2);
 
   public static XboxController ManipControl = new XboxController(0); 
   public static XboxController DriveControl = new XboxController(1);
@@ -33,8 +33,7 @@ public class robotContainer {
   public static tankDriveS tankDriveS = new tankDriveS();
   
   // Replace with CommandPS4Controller or CommandJoystick if needed
-  private final CommandXboxController driverController =
-      new CommandXboxController(OperatorConstants.kDriverControllerPort);
+   //private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public robotContainer() {
@@ -64,6 +63,7 @@ public class robotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
+    
     return m_autoCommand;
   }
 

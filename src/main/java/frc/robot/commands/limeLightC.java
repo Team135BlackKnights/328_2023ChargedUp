@@ -7,9 +7,7 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class limeLightC extends CommandBase{
-    private final limeLightS limeLight;
     public limeLightC(limeLightS subsystem) {
-        limeLight = subsystem;
         addRequirements(subsystem);
     }
     @Override
@@ -20,8 +18,8 @@ public class limeLightC extends CommandBase{
     public void execute(){
         NetworkTable limeLightTable = NetworkTableInstance.getDefault().getTable("limelight");
         NetworkTableEntry tx = limeLightTable.getEntry("tx");
-        NetworkTableEntry ty = limeLightTable.getEntry("ty");
-        NetworkTableEntry ta = limeLightTable.getEntry("ta");
+        
+        
          double x = tx.getDouble(0.0);
          double y = tx.getDouble(0.0);
          double a = tx.getDouble(0.0);
