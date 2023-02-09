@@ -14,11 +14,11 @@ public void initialize() {
 }
 public void execute(){
 
-    if (robotContainer.ManipControl.getAButtonPressed()) {
+    if (robotContainer.ManipControl.getAButtonPressed() && liftS.tooFarIn.get()) {
         liftS.flipMotor.set(-.4);
         
     }
-    else if (robotContainer.ManipControl.getYButtonPressed()) {
+    else if (robotContainer.ManipControl.getYButtonPressed() && liftS.tooFarIn.get()) {
         liftS.flipMotor.set(.4);
     }
     SmartDashboard.putNumber("liftEncPos", liftS.flipMotorEncoder.getPosition());
