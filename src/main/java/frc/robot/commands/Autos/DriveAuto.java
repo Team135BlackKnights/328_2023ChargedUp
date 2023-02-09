@@ -3,43 +3,24 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands.Autos;
-
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.encoderDriveC;
 import frc.robot.subsystems.tankDriveS;
+import frc.robot.commands.Autos.resetEncoders;
 
 
-  public class driveAuto extends CommandBase {
-  Timer timer = new Timer();
-  tankDriveS tankTankDriveS;
-  boolean isFinished = false;
-  double DriveTime;
+  public class driveAuto extends SequentialCommandGroup {
+  public driveAuto(tankDriveS drive){
+    super(
+      Commands.sequence(
+        new resetEncoders(drive),
+        new encoderDriveC(drive, -20)
+      )
+    );
+  }
+}
 
-  public driveAuto (tankDriveS m_drive, double i) {
-    tankTankDriveS = m_drive;
-    DriveTime = i;
-    addRequirements(tankTankDriveS);
-  }
-  public void initialize() {
-    timer.start();
-  }
-  
-  @Override
-  public void execute(){
-    SmartDashboard.putNumber("Auto Timer", Timer.getMatchTime());
-    
-    if (timer.get() < 5){
-      tankTankDriveS.tankDrive(.5, .5);
-    }
-    else if (timer.get() < 10){
-      tankTankDriveS.tankDrive(.5, .5);
-    }
-    else if (timer.get() > DriveTime){
-      tankTankDriveS.tankDrive(0, 0);
-      isFinished = true;
-    }
-
-  }
-  }
 

@@ -12,33 +12,33 @@ import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 public class tankDriveS extends SubsystemBase{ 
     //motors for drive
     public DifferentialDrive tank;
-    public CANSparkMax FrontLeft = new CANSparkMax(robotMap.Drive.FL_ID, MotorType.kBrushless);
-    public CANSparkMax FrontRight = new CANSparkMax(robotMap.Drive.FR_ID, MotorType.kBrushless);
-    public CANSparkMax BackLeft = new CANSparkMax(robotMap.Drive.BL_ID, MotorType.kBrushless);
-    public CANSparkMax BackRight = new CANSparkMax(robotMap.Drive.BR_ID, MotorType.kBrushless);
+    public CANSparkMax frontLeft = new CANSparkMax(robotMap.drive.FL_ID, MotorType.kBrushless);
+    public CANSparkMax frontRight = new CANSparkMax(robotMap.drive.FR_ID, MotorType.kBrushless);
+    public CANSparkMax backLeft = new CANSparkMax(robotMap.drive.BL_ID, MotorType.kBrushless);
+    public CANSparkMax backRight = new CANSparkMax(robotMap.drive.BR_ID, MotorType.kBrushless);
 
     public Encoder LeftSide, RightSide; 
     //connects encoders to drive motorgroups
     public static RelativeEncoder lFront, lBack, rFront, rBack;  
     public tankDriveS(){  
     //connects encoders to drive motors
-        lFront= FrontLeft.getEncoder();
-        lBack = BackLeft.getEncoder();
-        rFront= FrontRight.getEncoder();
-        rBack = BackRight.getEncoder();
+        lFront= frontLeft.getEncoder();
+        lBack = backLeft.getEncoder();
+        rFront= frontRight.getEncoder();
+        rBack = backRight.getEncoder();
 
-        FrontLeft.enableVoltageCompensation(12);
-        FrontRight.enableVoltageCompensation(12);
-        BackLeft.enableVoltageCompensation(12);
-        BackRight.enableVoltageCompensation(12);
+        frontLeft.enableVoltageCompensation(12);
+        frontRight.enableVoltageCompensation(12);
+        backLeft.enableVoltageCompensation(12);
+        backRight.enableVoltageCompensation(12);
 
-        FrontLeft.setIdleMode(IdleMode.kCoast);
-        FrontRight.setIdleMode(IdleMode.kCoast);
-        BackLeft.setIdleMode(IdleMode.kCoast);
-        BackRight.setIdleMode(IdleMode.kCoast); 
+        frontLeft.setIdleMode(IdleMode.kCoast);
+        frontRight.setIdleMode(IdleMode.kCoast);
+        backLeft.setIdleMode(IdleMode.kCoast);
+        backRight.setIdleMode(IdleMode.kCoast); 
 
-        MotorControllerGroup leftMotors = new MotorControllerGroup(FrontLeft, BackLeft); 
-        MotorControllerGroup rightMotors = new MotorControllerGroup(FrontRight, BackRight);
+        MotorControllerGroup leftMotors = new MotorControllerGroup(frontLeft, backLeft); 
+        MotorControllerGroup rightMotors = new MotorControllerGroup(frontRight, backRight);
     //these are the motorgroups
         
         tank = new DifferentialDrive(leftMotors, rightMotors);
