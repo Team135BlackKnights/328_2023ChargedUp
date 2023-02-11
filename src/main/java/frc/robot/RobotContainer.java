@@ -26,13 +26,13 @@ import frc.robot.commands.liftC;
 public class robotContainer {
   // The robot's subsystems and commands are defined here...
   //public static tankDriveS drive = new tankDriveS();
-  private final frc.robot.commands.Autos.driveAuto m_autoCommand= new driveAuto(tankDriveS);
-
+  public static tankDriveS tankDriveS = new tankDriveS();
+  public static driveAuto m_autoCommand= new driveAuto(tankDriveS);
   public static XboxController ManipControl = new XboxController(0); 
   public static XboxController DriveControl = new XboxController(1);
 
     public static intakeS _intakeS = new intakeS(); 
-  public static tankDriveS tankDriveS = new tankDriveS();
+
   public static liftS _liftS = new liftS();
   
   // Replace with CommandPS4Controller or CommandJoystick if needed

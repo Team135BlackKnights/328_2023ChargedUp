@@ -17,6 +17,7 @@ public class tankDriveC extends CommandBase{
       @Override
   public void initialize() {
     // drive.navx.calibrate();
+    
     drive.frontLeft.setIdleMode(IdleMode.kCoast);
     drive.frontRight.setIdleMode(IdleMode.kCoast);
     drive.backLeft.setIdleMode(IdleMode.kCoast);

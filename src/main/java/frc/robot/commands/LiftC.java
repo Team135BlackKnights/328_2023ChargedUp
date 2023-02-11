@@ -14,7 +14,7 @@ public void initialize() {
 }
 public void execute(){
 
-    if (robotContainer.ManipControl.getAButtonPressed() && liftS.tooFarIn.get()) {
+    if (robotContainer.ManipControl.getAButtonPressed() && liftS.tooFarOut.get()) {
         liftS.flipMotor.set(-.4);
         
     }
