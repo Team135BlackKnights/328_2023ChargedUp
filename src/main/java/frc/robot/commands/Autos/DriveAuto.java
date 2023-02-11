@@ -12,7 +12,7 @@ import frc.robot.subsystems.tankDriveS;
   public driveAuto(tankDriveS drive){
     System.out.print("Initializing driveAuto...");
     addCommands(
-    new encoderDriveC(drive, -20.0));
+    new encoderDriveC(drive, -15.0));
   }
 }
 

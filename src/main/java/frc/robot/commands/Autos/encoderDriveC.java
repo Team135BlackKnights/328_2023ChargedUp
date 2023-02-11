@@ -39,11 +39,14 @@ public class encoderDriveC extends CommandBase {
         drive.tankDrive(-piController.calculate(finishedEncValue, desired),piController.calculate(finishedEncValue, desired));
         
         if (Math.abs(piController.getPositionError()) < 1) { 
+            drive.runStop();
             isFinished = true;
+            
         }}
     @Override
     public void end(boolean interrupted) {
         drive.tankDrive(0, 0);
+        drive.runStop();
     }
   
     @Override

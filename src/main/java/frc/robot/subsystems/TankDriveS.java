@@ -55,4 +55,10 @@ public class tankDriveS extends SubsystemBase{
         rFront.setPosition(0);
         rBack.setPosition(0);
     }
+    public void runStop() {
+        frontLeft.setIdleMode(IdleMode.kBrake);
+        frontRight.setIdleMode(IdleMode.kBrake);
+        backLeft.setIdleMode(IdleMode.kBrake);
+        backRight.setIdleMode(IdleMode.kBrake); 
+    }
 }
