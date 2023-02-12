@@ -16,7 +16,6 @@ import frc.robot.commands.Autos.resetEncoders;
   public driveAuto(tankDriveS drive){
     super(
       Commands.sequence(
-        new resetEncoders(drive),
         new encoderDriveC(drive, -20)
       )
     );
