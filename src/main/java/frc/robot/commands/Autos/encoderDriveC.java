@@ -36,7 +36,8 @@ public class encoderDriveC extends CommandBase {
         SmartDashboard.putNumber("encoder average", encAvg);
         System.out.print("executing encDriveC...");
         double finishedEncValue = ratioEnc*wheelDiameter;
-        drive.tankDrive(-piController.calculate(finishedEncValue, desired),piController.calculate(finishedEncValue, desired));
+        //Adjust the -.03 until the robot drives STRAIGHT 90.
+        drive.tankDrive((piController.calculate(finishedEncValue, desired))-.03,-piController.calculate(finishedEncValue, desired));
         
         if (Math.abs(piController.getPositionError()) < 1) { 
             drive.runStop();
