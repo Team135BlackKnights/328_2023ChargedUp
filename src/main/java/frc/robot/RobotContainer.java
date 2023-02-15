@@ -16,7 +16,10 @@ import frc.robot.commands.intakeC;
 import frc.robot.subsystems.intakeS;
 import frc.robot.subsystems.liftS;
 import frc.robot.commands.liftC;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import java.time.chrono.ThaiBuddhistEra; //idfk why but this is COMPLETELY crucial to the operation of the robot.
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -27,7 +30,7 @@ public class robotContainer {
   // The robot's subsystems and commands are defined here...
   //public static tankDriveS drive = new tankDriveS();
   public static tankDriveS tankDriveS = new tankDriveS();
-  public static driveAuto m_autoCommand= new driveAuto(tankDriveS);
+  public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS);
   public static XboxController ManipControl = new XboxController(0); 
   public static XboxController DriveControl = new XboxController(1);
 
@@ -35,11 +38,16 @@ public class robotContainer {
 
   public static liftS _liftS = new liftS();
   
+  SendableChooser<Command> autoChooser = new SendableChooser<>();
+
   // Replace with CommandPS4Controller or CommandJoystick if needed
    //private final CommandXboxController m_driverController = new CommandXboxController(OperatorConstants.kDriverControllerPort);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public robotContainer() {
+
+    SmartDashboard.putData(autoChooser);
+    autoChooser.addOption("Move out of community", driveOutOfCommunity);
        _intakeS.setDefaultCommand(new intakeC(_intakeS));
     tankDriveS.setDefaultCommand(new tankDriveC(tankDriveS));
     _liftS.setDefaultCommand(new liftC(_liftS));    
@@ -67,7 +75,7 @@ public class robotContainer {
    */
   public Command getAutonomousCommand() {
     
-    return m_autoCommand;
+    return autoChooser.getSelected();
   }
 
 }
