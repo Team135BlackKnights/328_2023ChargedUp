@@ -47,8 +47,8 @@ else if (robotContainer.DriveControl.getPOV() == 270) {
   drive.tankDrive(0.5, 0.5);
 }*/
   /*drive.tankDrive(-leftSpeed, rightSpeed);*/
-SmartDashboard.putNumber("Left Motor",leftSpeed);
-SmartDashboard.putNumber("Right Motor", rightSpeed);
+SmartDashboard.putNumber("Left Motor",-leftSpeed*speedMod);
+SmartDashboard.putNumber("Right Motor", rightSpeed*speedMod);
 drive.tankDrive(-leftSpeed*speedMod,rightSpeed*speedMod);
 }
  
