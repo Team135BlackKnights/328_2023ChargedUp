@@ -1,9 +1,7 @@
 package frc.robot.commands;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.robotContainer;
-import frc.robot.robotMap;
 import frc.robot.subsystems.intakeS;
 
 public class intakeC extends CommandBase {
@@ -60,7 +58,7 @@ boolean holdSomething = false;
         intake.leftWheels.set(0);
         intake.rightWheels.set(0);
       }
-
+SmartDashboard.getNumber("open/close position", intakeS.manipUpEncoder.getPosition());
 isFinished = true;
 }
 @Override
