@@ -6,6 +6,7 @@ package frc.robot;
 
 //import frc.robot.Constants.OperatorConstants;
 import frc.robot.commands.Autos.driveAuto;
+import frc.robot.commands.Autos.otherAuto;
 import frc.robot.commands.tankDriveC;
 import frc.robot.subsystems.tankDriveS;
 import edu.wpi.first.wpilibj.XboxController;

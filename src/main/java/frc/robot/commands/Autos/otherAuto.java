@@ -24,7 +24,7 @@ public class otherAuto extends CommandBase {
     
             if (timeElapsed.get() <= 2) {
                 
-                drive.tankDrive(-autoSpeed*1.0375,autoSpeed);
+                drive.tankDrive(-autoSpeed*1.0375,autoSpeed); //test constant
                 
             }
             else if (timeElapsed.get() <= 3) {
