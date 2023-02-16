@@ -18,8 +18,6 @@ import frc.robot.subsystems.liftS;
 import frc.robot.commands.liftC;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import java.time.chrono.ThaiBuddhistEra; //idfk why but this is COMPLETELY crucial to the operation of the robot.
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
