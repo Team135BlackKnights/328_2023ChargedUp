@@ -1,4 +1,4 @@
-package frc.robot.commands.Autos;
+/*package frc.robot.commands.Autos;
 import frc.robot.subsystems.tankDriveS;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -59,3 +59,4 @@ public class otherAuto extends CommandBase {
             drive.runStop();
         }
     }
+*/
