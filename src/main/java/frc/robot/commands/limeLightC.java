@@ -23,9 +23,11 @@ public class limeLightC extends CommandBase{
          double x = tx.getDouble(0.0);
          double y = tx.getDouble(0.0);
          double a = tx.getDouble(0.0);
+
         SmartDashboard.putNumber("x distance", x);
         SmartDashboard.putNumber("y distance", y);
         SmartDashboard.putNumber("area", a);
+        
         double distance = y/x; // Math.tan()
         SmartDashboard.putNumber("distance to target", distance);
     }

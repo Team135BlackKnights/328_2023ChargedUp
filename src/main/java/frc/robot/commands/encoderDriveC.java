@@ -1,9 +1,10 @@
-package frc.robot.commands.Autos;
+package frc.robot.commands;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.tankDriveS;
 import java.lang.Math;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class encoderDriveC extends CommandBase {
     //Variable declaration
     private final tankDriveS drive;

@@ -14,10 +14,10 @@ public void initialize() {
 public void execute(){
 
     if (robotContainer.ManipControl.getAButtonPressed() == true) {
-        liftS.flipMotor.set(-.4);
+        liftS.flipMotor.set(-.2);
     }
     else if (robotContainer.ManipControl.getYButtonPressed() == true ) {
-        liftS.flipMotor.set(.4);
+        liftS.flipMotor.set(.2);
     }
     else {
         liftS.flipMotor.set(0);
