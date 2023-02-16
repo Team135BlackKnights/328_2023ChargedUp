@@ -12,7 +12,6 @@ import frc.robot.subsystems.tankDriveS;
     System.out.print("Initializing driveAuto...");
     addCommands(
    new basicAuto(drive, 4.328, .4)
-   //new otherAuto(drive, 10, .4)
    //new encoderDriveC(drive, 10.0)
    );
 
