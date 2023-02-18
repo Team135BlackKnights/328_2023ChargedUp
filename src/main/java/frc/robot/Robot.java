@@ -45,8 +45,11 @@ public class Robot extends TimedRobot {
               // Get the UsbCamera from CameraServer
               UsbCamera camera = CameraServer.startAutomaticCapture();
               // Set the resolution
-              camera.setResolution(240, 144);
-
+              camera.setResolution(360, 240);
+            });
+            m_visionThread.setDaemon(true);
+            m_visionThread.start();
+/*
               // Get a CvSink. This will capture Mats from the camera
               CvSink cvSink = CameraServer.getVideo();
               // Setup a CvSource. This will send images back to the Dashboard
@@ -76,6 +79,7 @@ public class Robot extends TimedRobot {
             });
     m_visionThread.setDaemon(true);
     m_visionThread.start();
+    */
     }
 
   /**
