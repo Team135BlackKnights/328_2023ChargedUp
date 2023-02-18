@@ -25,7 +25,7 @@ double autoSpeed;
 
         if (timeElapsed.get() <= seconds) {
             
-            drive.tankDrive(-autoSpeed*1.0375,autoSpeed);
+            drive.tankDrive(-autoSpeed,autoSpeed);
             
         }
         
