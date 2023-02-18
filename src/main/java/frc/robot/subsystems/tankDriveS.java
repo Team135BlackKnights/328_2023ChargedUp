@@ -32,11 +32,14 @@ public class tankDriveS extends SubsystemBase{
         backLeft.enableVoltageCompensation(12);
         backRight.enableVoltageCompensation(12);
 
-        frontLeft.setIdleMode(IdleMode.kCoast);
-        frontRight.setIdleMode(IdleMode.kCoast);
-        backLeft.setIdleMode(IdleMode.kCoast);
-        backRight.setIdleMode(IdleMode.kCoast); 
-
+        frontLeft.setIdleMode(IdleMode.kBrake);
+        frontRight.setIdleMode(IdleMode.kBrake);
+        backLeft.setIdleMode(IdleMode.kBrake);
+        backRight.setIdleMode(IdleMode.kBrake); 
+        frontLeft.burnFlash();
+        frontRight.burnFlash();
+        backLeft.burnFlash();
+        backLeft.burnFlash();
         MotorControllerGroup leftMotors = new MotorControllerGroup(frontLeft, backLeft); 
         MotorControllerGroup rightMotors = new MotorControllerGroup(frontRight, backRight);
     //these are the motorgroups
@@ -60,5 +63,6 @@ public class tankDriveS extends SubsystemBase{
         frontRight.setIdleMode(IdleMode.kBrake);
         backLeft.setIdleMode(IdleMode.kBrake);
         backRight.setIdleMode(IdleMode.kBrake); 
+
     }
 }

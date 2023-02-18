@@ -5,13 +5,16 @@
 package frc.robot.commands.Autos;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.tankDriveS;
+import frc.robot.commands.encoderDriveC;
+import frc.robot.subsystems.intakeS;
 
 
   public class driveAuto extends SequentialCommandGroup {
-  public driveAuto(tankDriveS drive){
+  public driveAuto(tankDriveS drive, intakeS intake){
     System.out.print("Initializing driveAuto...");
     addCommands(
-   new basicAuto(drive, 4.328, .4)
+      new shootOut(intake, 2, .5),
+   new basicAuto(drive, 5.328 , .4)
    //new otherAuto(drive, 10, .4)
    //new encoderDriveC(drive, 10.0)
    );

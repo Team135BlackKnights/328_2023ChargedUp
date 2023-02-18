@@ -28,11 +28,12 @@ public class robotContainer {
   // The robot's subsystems and commands are defined here...
   //public static tankDriveS drive = new tankDriveS();
   public static tankDriveS tankDriveS = new tankDriveS();
-  public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS);
-  public static XboxController ManipControl = new XboxController(0); 
-  public static XboxController DriveControl = new XboxController(1);
+  public static intakeS _intakeS = new intakeS(); 
+  public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS);
+  public static XboxController ManipControl = new XboxController(1); 
+  public static XboxController DriveControl = new XboxController(0);
 
-    public static intakeS _intakeS = new intakeS(); 
+    
 
   public static liftS _liftS = new liftS();
   
@@ -44,8 +45,8 @@ public class robotContainer {
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public robotContainer() {
 
-    SmartDashboard.putData(autoChooser);
-    autoChooser.addOption("Move out of community", driveOutOfCommunity);
+   // SmartDashboard.putData(autoChooser);
+    //autoChooser.addOption("Move out of community", driveOutOfCommunity);
        _intakeS.setDefaultCommand(new intakeC(_intakeS));
     tankDriveS.setDefaultCommand(new tankDriveC(tankDriveS));
     _liftS.setDefaultCommand(new liftC(_liftS));    
@@ -72,8 +73,9 @@ public class robotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-    
-    return autoChooser.getSelected();
+    System.out.print("autonomous obtained");
+    //return autoChooser.getSelected();
+  return driveOutOfCommunity;
   }
 
 }

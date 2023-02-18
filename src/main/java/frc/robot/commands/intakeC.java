@@ -23,8 +23,12 @@ boolean holdSomething = false;
     }
 
     public void execute(){
-  
-      if (robotContainer.ManipControl.getAButton() == true) {
+      SmartDashboard.putNumber("claw current", intake.inAndOut.getOutputCurrent());
+      SmartDashboard.putNumber("left wheels current", intake.leftWheels.getOutputCurrent());
+      SmartDashboard.putNumber("right wheels current", intake.rightWheels.getOutputCurrent());
+      
+      
+       if (robotContainer.ManipControl.getAButton() == true) {
         //while (intakeS.ManipUpEncoder.getPosition() != 30/42 ) {
         //intake.inAndOut.set(motorSpeedHandling);
         //closes the arms to a 30 degree angle
@@ -54,11 +58,16 @@ boolean holdSomething = false;
         intake.rightWheels.set(0.5);
         //Pushes things out with wheels
       }
+      else if (robotContainer.ManipControl.getRightTriggerAxis() >= .69){
+        intake.leftWheels.set(1);
+       intake.rightWheels.set(-1);
+        //Pushes faster
+      }
+        
       else { 
         intake.leftWheels.set(0);
         intake.rightWheels.set(0);
       }
-SmartDashboard.getNumber("open/close position", intakeS.manipUpEncoder.getPosition());
 isFinished = true;
 }
 @Override
