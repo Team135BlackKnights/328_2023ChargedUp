@@ -18,6 +18,8 @@ import frc.robot.subsystems.liftS;
 import frc.robot.commands.liftC;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -32,8 +34,6 @@ public class robotContainer {
   public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS);
   public static XboxController ManipControl = new XboxController(1); 
   public static XboxController DriveControl = new XboxController(0);
-
-    
 
   public static liftS _liftS = new liftS();
   

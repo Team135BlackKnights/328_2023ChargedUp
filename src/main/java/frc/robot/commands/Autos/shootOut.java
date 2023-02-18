@@ -11,7 +11,6 @@ public class shootOut extends CommandBase {
     double timeRan;
     Timer timeRunning = new Timer();
     public  shootOut(intakeS subsystem, double MotorSpeed, double timeRan ){
-
         intake = subsystem;
     
         addRequirements(subsystem);
@@ -19,9 +18,10 @@ public class shootOut extends CommandBase {
     }
     public void initialize(){
         System.out.print("Running shootOut...");
+        timeRunning.start();
     }
     public void execute(double timeRan, double motorSpeed) {
-
+        System.out.print("shootOut running");
         if (timeRunning.get() <= timeRan) {
             intake.leftWheels.set(motorSpeed);
             intake.rightWheels.set(-motorSpeed);
@@ -32,6 +32,8 @@ public class shootOut extends CommandBase {
     public void end() {
         intake.rightWheels.set(0);
         intake.leftWheels.set(0);
+        timeRunning.stop();
+        timeRunning.reset();
     }
 }
 

@@ -33,5 +33,8 @@ double autoSpeed;
     public void end() {
         drive.tankDrive(0,0);
         drive.runStop();
+        timeElapsed.stop();
+        timeElapsed.reset();
+
     }
 }
