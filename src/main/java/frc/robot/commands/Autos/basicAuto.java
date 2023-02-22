@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 public class basicAuto extends CommandBase {
 long timeStart;
 double seconds;
+boolean isFinished;
 double autoSpeed;
     public final tankDriveS drive;
     Timer timeElapsed= new Timer();
@@ -17,24 +18,34 @@ double autoSpeed;
         addRequirements(subsystem);
         
     }
+    @Override
     public void initialize(){
         System.out.print("Running basicAuto...");
     timeElapsed.start();
+    isFinished = false;
     }
+    @Override
     public void execute() {
 
         if (timeElapsed.get() <= seconds) {
             
             drive.tankDrive(-autoSpeed, autoSpeed);
             
+        } else{
+            isFinished = true;
         }
         
     }
-    public void end() {
+    @Override
+    public void end(boolean interrupted) {
         drive.tankDrive(0,0);
         drive.runStop();
         timeElapsed.stop();
         timeElapsed.reset();
 
+    }
+    @Override
+    public boolean isFinished() {
+        return isFinished;
     }
 }

@@ -1,14 +1,24 @@
-import edu.wpi.cscore.CvSink;
-import edu.wpi.cscore.CvSource;
-import edu.wpi.cscore.UsbCamera;
+package frc.robot.commands;
+import edu.wpi.first.cscore.CvSink;
+import edu.wpi.first.cscore.CvSource;
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.opencv.core.*;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.imgcodecs.Imgcodecs;
-
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.CvSink;
+import edu.wpi.first.cscore.CvSource;
+import edu.wpi.first.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.TimedRobot;
+import org.opencv.core.Mat;
+import org.opencv.core.Point;
+import org.opencv.core.Scalar;
+import org.opencv.imgproc.Imgproc;
 public class cubeDetector {
-    
+    /* 
+
     private static final int CAMERA_WIDTH = 640;
     private static final int CAMERA_HEIGHT = 480;
     private static final int PURPLE_H_MIN = 110;
@@ -21,18 +31,16 @@ public class cubeDetector {
 
     public void detectCube() {
         
-        // Create a new camera server instance
-        CameraServer cameraServer = CameraServer.getInstance();
-        
+        // Create a new camera server instance        
         // Create a new USB camera and set its resolution
-        UsbCamera camera = cameraServer.startAutomaticCapture();
+        UsbCamera camera = CameraServer.startAutomaticCapture();
         camera.setResolution(CAMERA_WIDTH, CAMERA_HEIGHT);
         
         // Create a new OpenCV video sink
-        CvSink cvSink = cameraServer.getVideo();
+        CvSink cvSink = CameraServer.getVideo();
         
         // Create a new OpenCV video source
-        CvSource outputStream = cameraServer.putVideo("Cube Detector", CAMERA_WIDTH, CAMERA_HEIGHT);
+        CvSource outputStream = CameraServer.putVideo("Cube Detector", CAMERA_WIDTH, CAMERA_HEIGHT);
         
         // Create a new Mat to hold the captured frame
         Mat mat = new Mat();
@@ -57,7 +65,7 @@ public class cubeDetector {
                     new Scalar(PURPLE_H_MAX, PURPLE_S_MAX, PURPLE_V_MAX), thresholdMat);
             
             // Find the contours in the thresholded image
-            Mat contoursMat = new Mat();
+            List<MatOfPoint> contoursMat = new List<MatOfPoint>;
             Imgproc.findContours(thresholdMat, contoursMat, new Mat(), Imgproc.RETR_LIST, Imgproc.CHAIN_APPROX_SIMPLE);
             
             // Draw the contours on the original image
@@ -87,6 +95,7 @@ public class cubeDetector {
         double driveSpeed = -y / CAMERA_HEIGHT * maxSpeed;
         
         // Apply drive and turn speeds to motors
-        driveTrain.arcadeDrive(driveSpeed, turnSpeed);
+        tankDriveC.arcadeDrive(driveSpeed, turnSpeed);
     }
+    */
 }

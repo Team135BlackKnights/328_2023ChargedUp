@@ -14,9 +14,9 @@ import frc.robot.subsystems.intakeS;
    // otherAuto otherAutoL = new otherAuto(drive, 10, .4);
  //   encoderDriveC encoderDriveL = new encoderDriveC(drive, 10.0);
     shootOutC shootOutL = new shootOutC(drive,intake,2,.5);
-    flipAutoC flipAutoL = new flipAutoC(drive,.4,180);
+    encoderTurnC encoderTurnL = new encoderTurnC(drive,180);
     System.out.print("Initializing driveAuto...");
-    addCommands(shootOutL,basicAutoL,flipAutoL);
+    addCommands(shootOutL,basicAutoL,encoderTurnL);
    //addCommands(new basicAuto(drive,5.328,.4));
 
   }

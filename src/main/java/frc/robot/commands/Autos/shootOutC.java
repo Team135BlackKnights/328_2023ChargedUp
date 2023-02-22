@@ -8,6 +8,7 @@ import frc.robot.subsystems.tankDriveS;
 public class shootOutC extends CommandBase {
 double seconds;
 double autoSpeed;
+boolean isFinished;
     public final intakeS intake;
     public final tankDriveS drive;
     Timer timeElapsed= new Timer();
@@ -19,10 +20,13 @@ double autoSpeed;
         addRequirements(subsystem);
         
     }
+    @Override
     public void initialize(){
         System.out.print("intializing shootOut...");
     timeElapsed.start();
+    isFinished = false;
     }
+    @Override
     public void execute() {
         System.out.print("Running shootOut...");
         if (timeElapsed.get() <= seconds) {
@@ -30,14 +34,20 @@ double autoSpeed;
             intake.leftWheels.set(autoSpeed);
             intake.rightWheels.set(-autoSpeed);
             
+        } else {
+            isFinished = true;
         }
         
     }
-    public void end() {
+    @Override
+    public void end(boolean interrupted) {
         intake.rightWheels.set(0);
         intake.leftWheels.set(0);
         timeElapsed.stop();
         timeElapsed.reset();
-        new basicAuto(drive,5.328,.4);
+    }
+    @Override
+    public boolean isFinished() {
+        return isFinished;
     }
 }
