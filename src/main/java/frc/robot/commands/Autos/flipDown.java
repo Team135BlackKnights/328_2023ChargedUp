@@ -1,5 +1,4 @@
 package frc.robot.commands.Autos;
-import javax.swing.text.Position;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.liftS;
@@ -18,9 +17,9 @@ public class flipDown extends CommandBase {
         System.out.println("initializing flipDown");
     }
     public void execute() {
-        System.out.println("running TurnAuto");
+        System.out.println("running flipDown");
         if(Drop.flipMotorEncoder.getPosition() == 300 ) {
-            Drop.moveLift(0.5);
+            Drop.moveLift(0.3);
         }
         else{
             end();

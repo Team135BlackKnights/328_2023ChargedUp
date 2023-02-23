@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import edu.wpi.first.wpilibj.AnalogGyro;
 import frc.robot.commands.intakeC;
 import frc.robot.subsystems.intakeS;
 import frc.robot.subsystems.liftS;
@@ -34,7 +33,6 @@ public class robotContainer {
   public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS);
   public static XboxController ManipControl = new XboxController(1); 
   public static XboxController DriveControl = new XboxController(0);
-  //public static AnalogGyro gyro = new AnalogGyro(0); use lator
 
   public static liftS _liftS = new liftS();
   
