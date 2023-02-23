@@ -18,7 +18,7 @@ import frc.robot.subsystems.intakeS;
    //new encoderDriveC(drive, 10.0)
    );
    //addCommands(new basicAuto(drive,5.328,.4));
-
+ 
   }
 }
 

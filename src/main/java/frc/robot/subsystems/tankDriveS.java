@@ -63,6 +63,9 @@ public class tankDriveS extends SubsystemBase{
         frontRight.setIdleMode(IdleMode.kBrake);
         backLeft.setIdleMode(IdleMode.kBrake);
         backRight.setIdleMode(IdleMode.kBrake); 
-
+        frontLeft.burnFlash();
+        frontRight.burnFlash();
+        backLeft.burnFlash();
+        backRight.burnFlash();
     }
 }

@@ -12,12 +12,13 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj.AnalogGyro;
 import frc.robot.commands.intakeC;
 import frc.robot.subsystems.intakeS;
 import frc.robot.subsystems.liftS;
 import frc.robot.commands.liftC;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 
 
 /**
@@ -28,12 +29,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class robotContainer {
   // The robot's subsystems and commands are defined here...
-  //public static tankDriveS drive = new tankDriveS();
   public static tankDriveS tankDriveS = new tankDriveS();
   public static intakeS _intakeS = new intakeS(); 
   public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS);
   public static XboxController ManipControl = new XboxController(1); 
   public static XboxController DriveControl = new XboxController(0);
+  //public static AnalogGyro gyro = new AnalogGyro(0); use lator
 
   public static liftS _liftS = new liftS();
   
