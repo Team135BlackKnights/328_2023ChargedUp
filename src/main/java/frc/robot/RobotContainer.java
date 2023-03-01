@@ -30,11 +30,12 @@ public class robotContainer {
   // The robot's subsystems and commands are defined here...
   public static tankDriveS tankDriveS = new tankDriveS();
   public static intakeS _intakeS = new intakeS(); 
-  public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS);
+  public static liftS _liftS = new liftS();
+  public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS, _liftS);
   public static XboxController ManipControl = new XboxController(1); 
   public static XboxController DriveControl = new XboxController(0);
 
-  public static liftS _liftS = new liftS();
+ 
   
   SendableChooser<Command> autoChooser = new SendableChooser<>();
 

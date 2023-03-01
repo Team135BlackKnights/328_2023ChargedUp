@@ -8,11 +8,11 @@ import com.revrobotics.RelativeEncoder;
 
 
 public class liftS extends SubsystemBase{
-    CANSparkMax flipMotor = new CANSparkMax(lift.flipMotor_ID, MotorType.kBrushless);
+   public CANSparkMax flipMotor = new CANSparkMax(lift.flipMotor_ID, MotorType.kBrushless);
     public RelativeEncoder flipMotorEncoder = flipMotor.getEncoder();
  public liftS() {
-     flipMotor.setIdleMode(IdleMode.kBrake);
-     
+     flipMotor.setIdleMode(IdleMode.kCoast);
+     flipMotor.burnFlash();
     flipMotor.enableVoltageCompensation(12);
  }
    
