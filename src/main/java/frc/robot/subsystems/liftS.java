@@ -16,7 +16,20 @@ public class liftS extends SubsystemBase{
     flipMotor.enableVoltageCompensation(12);
  }
    
-    public void moveLift(double speed){
-        flipMotor.set(speed);
+    public void moveLiftDown(double speed){
+      if (flipMotorEncoder.getPosition() < 110) { //could be wrong
+         flipMotor.set(speed);
+      }
+    }
+    public void moveLiftUp(double speed){
+      if (flipMotorEncoder.getPosition() > 5){ //could be wrong.
+         flipMotor.set(speed);
+      }
+    }
+    public void stopLift(){
+       flipMotor.set(0);
+    }
+    public void resetEncoders() {
+       flipMotorEncoder.setPosition(0);
     }
     }

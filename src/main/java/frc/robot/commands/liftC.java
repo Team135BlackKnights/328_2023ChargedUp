@@ -10,25 +10,25 @@ public class liftC extends CommandBase {
     addRequirements(subsystem);
 }
 public void initialize() {
-    
 }
+int POV_UP = 0;
+int POV_DOWN = 180;
 public void execute(){
 SmartDashboard.putNumber("lift encoder value", lift.flipMotorEncoder.getPosition());
-if (robotContainer.ManipControl.getXButton()) {
+if (robotContainer.ManipControl.getPOV() == POV_UP) {
    // while (robotContainer.ManipControl.getYButton() == true){
-        lift.moveLift(-0.7);
+        lift.moveLiftUp(-0.7);
    }
     //}
     // }
-else if (robotContainer.ManipControl.getYButton()) {
+else if (robotContainer.ManipControl.getPOV() == POV_DOWN) {
    // while (robotContainer.ManipControl.getXButton() == true){
-        lift.moveLift(0.7);
+        lift.moveLiftDown(0.7);
     }
 //  }
 else{
-        lift.moveLift(0);
+        lift.stopLift();
     }
     
 }
 }
-

@@ -10,7 +10,10 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 public class tankDriveS extends SubsystemBase{ 
+
+Encoder encoder = new Encoder(0, 1);
     //motors for drive
+
     public DifferentialDrive tank;
     public CANSparkMax frontLeft = new CANSparkMax(robotMap.drive.FL_ID, MotorType.kBrushless);
     public CANSparkMax frontRight = new CANSparkMax(robotMap.drive.FR_ID, MotorType.kBrushless);
@@ -31,7 +34,7 @@ public class tankDriveS extends SubsystemBase{
         frontRight.enableVoltageCompensation(12);
         backLeft.enableVoltageCompensation(12);
         backRight.enableVoltageCompensation(12);
-
+        
         frontLeft.setIdleMode(IdleMode.kBrake);
         frontRight.setIdleMode(IdleMode.kBrake);
         backLeft.setIdleMode(IdleMode.kBrake);

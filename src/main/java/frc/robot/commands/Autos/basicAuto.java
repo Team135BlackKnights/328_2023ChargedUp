@@ -25,10 +25,9 @@ double autoSpeed;
 
         if (timeElapsed.get() <= seconds) {
             
-            drive.tankDrive(-autoSpeed, autoSpeed);
+            drive.tankDrive((-autoSpeed-.0125), autoSpeed);
             
         }
-        
     }
     public void end() {
         drive.tankDrive(0,0);
@@ -37,4 +36,5 @@ double autoSpeed;
         timeElapsed.reset();
 
     }
-}
+    }
+

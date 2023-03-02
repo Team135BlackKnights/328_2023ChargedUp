@@ -1,37 +1,4 @@
 package frc.robot.commands.Autos;
-<<<<<<< Updated upstream
-
-import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.liftS;
-
-
-public class flipDown extends CommandBase {
-    
-    public final liftS Drop;
-
-    public flipDown(liftS subsystem){
-        Drop = subsystem;
-        addRequirements(subsystem);
-    }   
-    @Override
-    public void initialize() {
-        System.out.println("initializing flipDown");
-    }
-    public void execute() {
-        System.out.println("running flipDown");
-        if(Drop.flipMotorEncoder.getPosition() == 300 ) {
-            Drop.moveLift(0.3);
-        }
-        else{
-            end();
-        }
-    } 
-    public void end() {
-        Drop.moveLift(0.0);
-    }
-}
-
-=======
 import frc.robot.subsystems.intakeS;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -41,9 +8,11 @@ import frc.robot.subsystems.liftS;
 public class flipDown extends CommandBase {
 double seconds;
 double autoSpeed;
+boolean flip;
 boolean isFinished;
     public final intakeS intake;
     public final liftS lift;
+    
     Timer timeElapsed= new Timer();
     public flipDown(liftS liftS,intakeS subsystem, double desiredTime, double MotorSpeed ){
         seconds = desiredTime;
@@ -57,16 +26,32 @@ boolean isFinished;
     public void initialize(){
         System.out.print("initializing flipDown");
     timeElapsed.start();
+    if(autoSpeed<0){
+        flip=true;
+    }else{
+        flip=false;
+    }
     isFinished = false;
+    lift.resetEncoders();
+    
     }
     @Override
     public void execute() {
         System.out.print("Running flipDown...");
-        while (timeElapsed.get() <= seconds) {
+        if (flip==true){
+            while (lift.flipMotorEncoder.getPosition()<0) { 
             
-           lift.moveLift(autoSpeed);
+                lift.moveLiftUp(autoSpeed);
+                 
+             }
+        }else{
+            while (lift.flipMotorEncoder.getPosition()<10) { 
             
+                lift.moveLiftDown(autoSpeed);
+                 
+             }
         }
+        
         lift.flipMotor.setIdleMode(IdleMode.kCoast);
          isFinished = true;
          
@@ -75,7 +60,7 @@ boolean isFinished;
     }
     @Override
     public void end(boolean interrupted) {
-        lift.moveLift(0);
+        lift.stopLift();
         timeElapsed.stop();
         timeElapsed.reset();
     }
@@ -84,4 +69,3 @@ boolean isFinished;
         return isFinished;
     }
 }
->>>>>>> Stashed changes

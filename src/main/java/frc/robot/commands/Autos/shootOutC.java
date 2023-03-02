@@ -11,33 +11,43 @@ double autoSpeed;
     public final intakeS intake;
     public final tankDriveS drive;
     Timer timeElapsed= new Timer();
+    boolean isFinished;
     public shootOutC(tankDriveS subsystem2DriveS,intakeS subsystem, double desiredTime, double MotorSpeed ){
         seconds = desiredTime;
         intake = subsystem;
         drive = subsystem2DriveS;
         autoSpeed = MotorSpeed;
         addRequirements(subsystem);
-        
+        intake.intakeEncoderReset();
     }
+    @Override 
     public void initialize(){
         System.out.print("intializing shootOut...");
     timeElapsed.start();
+    isFinished = false;
     }
+    @Override
     public void execute() {
         System.out.print("Running shootOut...");
         if (timeElapsed.get() <= seconds) {
             
             intake.leftWheels.set(autoSpeed);
             intake.rightWheels.set(-autoSpeed);
-            
+        } else {
+            isFinished = true;
         }
+
         
     }
-    public void end() {
+    @Override
+    public void end(boolean interrupted) {
         intake.rightWheels.set(0);
         intake.leftWheels.set(0);
         timeElapsed.stop();
         timeElapsed.reset();
-        new basicAuto(drive,5.328,.4);
+    }
+    @Override
+    public boolean isFinished() {
+        return isFinished;
     }
 }
