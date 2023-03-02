@@ -14,7 +14,7 @@ import frc.robot.subsystems.liftS;
     
    // otherAuto otherAutoL = new otherAuto(drive, 10, .4);
    encoderDriveC encoderDriveL = new encoderDriveC(drive, 12,24);
-    shootOutC shootOutL = new shootOutC(drive,intake,2,.65);
+    shootOutC shootOutL = new shootOutC(drive,intake,1,.65);
     flipDown flipDownL = new flipDown(lift, intake, 3, .7);
     flipDown flipDownU = new flipDown(lift,intake,3,-.7);
     System.out.print("Initializing driveAuto...");

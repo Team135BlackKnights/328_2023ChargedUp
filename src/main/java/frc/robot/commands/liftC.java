@@ -40,6 +40,7 @@ else if (robotContainer.ManipControl.getPOV() == POV_DOWN) {
     // while (robotContainer.ManipControl.getXButton() == true){
     }
 //  }
+//else if (robotContainer.ManipControl.getRightTriggerAxis() >= 10)
 else{
         lift.stopLift();
     }

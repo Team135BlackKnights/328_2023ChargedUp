@@ -29,6 +29,7 @@ public class encoderDriveC extends CommandBase{
     @Override
     public void initialize(){
         isFinished = false;
+        drive.runStop();
         driveDistance(distance,speed);
     }
 
@@ -41,9 +42,8 @@ public class encoderDriveC extends CommandBase{
 
         while (m_leftEncoder.getPosition() < targetCounts && m_rightEncoder.getPosition() < targetCounts) {
             double speed = Math.min(speedInchesPerSecond, (targetCounts - m_leftEncoder.getPosition()) / kEncoderCountsPerRevolution);
-            m_drive.set(speed);
+            drive.tankDrive((-speed*.4), (speed*.4)); //might need flip
         }
-
         m_drive.stopMotor();//replace with actual stop tank.
         isFinished = true;
     }

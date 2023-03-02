@@ -6,9 +6,10 @@ import frc.robot.subsystems.liftS;
 
 public class balanceScoreAuto extends SequentialCommandGroup {
     public balanceScoreAuto(tankDriveS tank, intakeS intake, liftS lift){
-        shootOutC shootOutL = new shootOutC(tank,intake,2,.65);
+        shootOutC shootOutL = new shootOutC(tank,intake,1,.65);
     flipDown flipDownL = new flipDown(lift, intake, 3, .7);
-    encoderDriveC encoderDriveL = new encoderDriveC(tank, 12,24);
-    addCommands(flipDownL, shootOutL,encoderDriveL);
+    encoderDriveC encoderDriveL = new encoderDriveC(tank,21,4.2);
+    turnAuto turnAutoL = new turnAuto(tank,.85,.4);
+    addCommands(flipDownL, shootOutL,encoderDriveL,turnAutoL);
     }
 }
