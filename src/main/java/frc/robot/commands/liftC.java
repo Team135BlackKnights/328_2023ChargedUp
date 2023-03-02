@@ -13,17 +13,31 @@ public void initialize() {
 }
 int POV_UP = 0;
 int POV_DOWN = 180;
+//boolean change =false;
 public void execute(){
 SmartDashboard.putNumber("lift encoder value", lift.flipMotorEncoder.getPosition());
-if (robotContainer.ManipControl.getPOV() == POV_UP) {
-   // while (robotContainer.ManipControl.getYButton() == true){
+if (robotContainer.ManipControl.getPOV() == POV_UP)  {
+    /*while (lift.flipMotorEncoder.getPosition()>5-lift.changer) { 
         lift.moveLiftUp(-0.7);
+   // while (robotContainer.ManipControl.getYButton() == true){
    }
+   */
+  lift.moveLiftUp(-0.7);
+}//
     //}
     // }
 else if (robotContainer.ManipControl.getPOV() == POV_DOWN) {
-   // while (robotContainer.ManipControl.getXButton() == true){
+    lift.moveLiftDown(0.7);
+    /*while (lift.flipMotorEncoder.getPosition()<95+lift.changer) { 
         lift.moveLiftDown(0.7);
+     }
+     */
+     /*change=true;
+     if (change==true){
+        lift.changer = 20;
+     }*/
+
+    // while (robotContainer.ManipControl.getXButton() == true){
     }
 //  }
 else{

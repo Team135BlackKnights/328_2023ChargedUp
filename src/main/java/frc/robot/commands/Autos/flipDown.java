@@ -25,15 +25,14 @@ boolean isFinished;
     @Override
     public void initialize(){
         System.out.print("initializing flipDown");
+    lift.resetEncoders();
     timeElapsed.start();
     if(autoSpeed<0){
         flip=true;
     }else{
         flip=false;
     }
-    isFinished = false;
-    lift.resetEncoders();
-    
+    isFinished = false;    
     }
     @Override
     public void execute() {
@@ -45,7 +44,7 @@ boolean isFinished;
                  
              }
         }else{
-            while (lift.flipMotorEncoder.getPosition()<10) { 
+            while (lift.flipMotorEncoder.getPosition()<20) { 
             
                 lift.moveLiftDown(autoSpeed);
                  

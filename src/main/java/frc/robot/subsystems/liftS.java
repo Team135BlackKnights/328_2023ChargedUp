@@ -10,6 +10,7 @@ import com.revrobotics.RelativeEncoder;
 public class liftS extends SubsystemBase{
    public CANSparkMax flipMotor = new CANSparkMax(lift.flipMotor_ID, MotorType.kBrushless);
     public RelativeEncoder flipMotorEncoder = flipMotor.getEncoder();
+    public int changer;
  public liftS() {
      flipMotor.setIdleMode(IdleMode.kCoast);
      flipMotor.burnFlash();
@@ -17,14 +18,22 @@ public class liftS extends SubsystemBase{
  }
    
     public void moveLiftDown(double speed){
-      if (flipMotorEncoder.getPosition() < 110) { //could be wrong
+      //if (flipMotorEncoder.getPosition() < 95+changer/*-changer*/) { //could be wrong
          flipMotor.set(speed);
+      /*}
+      else{
+         stopLift();
       }
+      */
     }
     public void moveLiftUp(double speed){
-      if (flipMotorEncoder.getPosition() > 5){ //could be wrong.
+     // if (flipMotorEncoder.getPosition() > 5-changer/*-changer*/){ //could be wrong. -147 PERHAPS
          flipMotor.set(speed);
+     /* }
+      else{
+         stopLift();
       }
+      */
     }
     public void stopLift(){
        flipMotor.set(0);

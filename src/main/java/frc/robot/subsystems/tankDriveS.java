@@ -8,7 +8,6 @@ import frc.robot.robotMap;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-
 public class tankDriveS extends SubsystemBase{ 
 
 Encoder encoder = new Encoder(0, 1);
@@ -19,7 +18,7 @@ Encoder encoder = new Encoder(0, 1);
     public CANSparkMax frontRight = new CANSparkMax(robotMap.drive.FR_ID, MotorType.kBrushless);
     public CANSparkMax backLeft = new CANSparkMax(robotMap.drive.BL_ID, MotorType.kBrushless);
     public CANSparkMax backRight = new CANSparkMax(robotMap.drive.BR_ID, MotorType.kBrushless);
-
+    public MotorControllerGroup autoMotors;
     public Encoder LeftSide, RightSide; 
     //connects encoders to drive motorgroups
     public static RelativeEncoder lFront, lBack, rFront, rBack;  
@@ -45,6 +44,7 @@ Encoder encoder = new Encoder(0, 1);
         backLeft.burnFlash();
         MotorControllerGroup leftMotors = new MotorControllerGroup(frontLeft, backLeft); 
         MotorControllerGroup rightMotors = new MotorControllerGroup(frontRight, backRight);
+        autoMotors = new MotorControllerGroup(frontLeft,backLeft,frontRight,backRight);
     //these are the motorgroups
         
         tank = new DifferentialDrive(leftMotors, rightMotors);

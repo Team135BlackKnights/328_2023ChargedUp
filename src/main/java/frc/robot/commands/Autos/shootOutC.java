@@ -18,11 +18,11 @@ double autoSpeed;
         drive = subsystem2DriveS;
         autoSpeed = MotorSpeed;
         addRequirements(subsystem);
-        intake.intakeEncoderReset();
     }
     @Override 
     public void initialize(){
         System.out.print("intializing shootOut...");
+    intake.intakeEncoderReset();
     timeElapsed.start();
     isFinished = false;
     }
