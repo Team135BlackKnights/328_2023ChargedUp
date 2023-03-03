@@ -13,12 +13,12 @@ import frc.robot.subsystems.liftS;
     basicAuto basicAutoL = new basicAuto(drive, 4.828 , .4);
     
    // otherAuto otherAutoL = new otherAuto(drive, 10, .4);
-   encoderDriveC encoderDriveL = new encoderDriveC(drive, 12,24);
+   encoderDriveC encoderDriveL = new encoderDriveC(drive, 18,4);
     shootOutC shootOutL = new shootOutC(drive,intake,1,.65);
     flipDown flipDownL = new flipDown(lift, intake, 3, .7);
     flipDown flipDownU = new flipDown(lift,intake,3,-.7);
     System.out.print("Initializing driveAuto...");
-    addCommands(flipDownL,shootOutL,basicAutoL,flipDownU);
+    addCommands(flipDownL,shootOutL,encoderDriveL,flipDownU);
    //addCommands(new basicAuto(drive,5.328,.4));
  
   }

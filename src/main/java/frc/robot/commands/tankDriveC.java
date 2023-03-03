@@ -37,16 +37,6 @@ double rightSpeed = robotContainer.DriveControl.getRightY();
   else{/*if (robotContainer.DriveControl.getLeftBumper() == false){ */
     speedMod = 1;
   }
-/*if (robotContainer.DriveControl.getPOV() == 0) {
-  drive.tankDrive(-0.7, 0.7);
-}
-else if (robotContainer.DriveControl.getPOV() == 90) {
-  drive.tankDrive(-0.5, -0.5);
-}
-else if (robotContainer.DriveControl.getPOV() == 270) {
-  drive.tankDrive(0.5, 0.5);
-}*/
-  /*drive.tankDrive(-leftSpeed, rightSpeed);*/
 SmartDashboard.putNumber("Left Motor",-leftSpeed*speedMod);
 SmartDashboard.putNumber("Right Motor", rightSpeed*speedMod);
 drive.tankDrive(-leftSpeed*speedMod,rightSpeed*speedMod);

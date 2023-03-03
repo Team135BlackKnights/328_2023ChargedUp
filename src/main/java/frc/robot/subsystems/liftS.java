@@ -13,18 +13,20 @@ public class liftS extends SubsystemBase{
     public int changer;
  public liftS() {
      flipMotor.setIdleMode(IdleMode.kCoast);
-     flipMotor.burnFlash();
     flipMotor.enableVoltageCompensation(12);
+    //flipMotor.setSmartCurrentLimit(30, 80);
+    flipMotor.burnFlash();
  }
    
     public void moveLiftDown(double speed){
-      //if (flipMotorEncoder.getPosition() < 95+changer/*-changer*/) { //could be wrong
+     // if (flipMotorEncoder.getPosition() < 95+changer/*-changer*/) { //could be wrong
          flipMotor.set(speed);
-      /*}
+     /* }
       else{
          stopLift();
       }
       */
+      
     }
     public void moveLiftUp(double speed){
      // if (flipMotorEncoder.getPosition() > 5-changer/*-changer*/){ //could be wrong. -147 PERHAPS

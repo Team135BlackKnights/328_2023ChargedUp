@@ -38,6 +38,10 @@ Encoder encoder = new Encoder(0, 1);
         frontRight.setIdleMode(IdleMode.kBrake);
         backLeft.setIdleMode(IdleMode.kBrake);
         backRight.setIdleMode(IdleMode.kBrake); 
+        frontLeft.setSmartCurrentLimit(30,80);
+        frontRight.setSmartCurrentLimit(30,80);
+        backLeft.setSmartCurrentLimit(30,80);
+        backRight.setSmartCurrentLimit(30,80);
         frontLeft.burnFlash();
         frontRight.burnFlash();
         backLeft.burnFlash();
@@ -66,6 +70,7 @@ Encoder encoder = new Encoder(0, 1);
         frontRight.setIdleMode(IdleMode.kBrake);
         backLeft.setIdleMode(IdleMode.kBrake);
         backRight.setIdleMode(IdleMode.kBrake); 
+     
         frontLeft.burnFlash();
         frontRight.burnFlash();
         backLeft.burnFlash();
