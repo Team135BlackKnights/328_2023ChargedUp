@@ -8,6 +8,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -40,7 +44,41 @@ public class Robot extends TimedRobot {
             });
             m_visionThread.setDaemon(true);
             m_visionThread.start();
-/*
+
+
+            NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+            NetworkTableEntry tx = table.getEntry("tx");  
+            NetworkTableEntry ty = table.getEntry("ty");
+            NetworkTableEntry ta = table.getEntry("ta");
+            
+            //read values periodically
+            double x = tx.getDouble(0.0);
+            double y = ty.getDouble(0.0);
+            double area = ta.getDouble(0.0); 
+            
+            //post to smart dashboard periodically
+            SmartDashboard.putNumber("LimelightX", x);
+            SmartDashboard.putNumber("LimelightY", y);
+            SmartDashboard.putNumber("LimelightArea", area);
+
+            //fix later
+            double targetOffsetAngle_Vertical = ty.getDouble(0.0);
+
+            // how many degrees back is your limelight rotated from perfectly vertical?
+            double limelightMountAngleDegrees = 25.0;
+
+            // distance from the center of the Limelight lens to the floor
+            double limelightLensHeightInches = 20.0;
+
+            // distance from the target to the floor
+            double goalHeightInches = 60.0;
+            double angleToGoalDegrees = limelightMountAngleDegrees + targetOffsetAngle_Vertical;
+            double angleToGoalRadians = angleToGoalDegrees * (3.14159 / 180.0);
+
+            //calculate distance WHY IS THIS CODE OVER HERE AND NOT ON LAPTOP --GRANT
+
+            double distanceFromLimelightToGoalInches = (goalHeightInches - limelightLensHeightInches)/Math.tan(angleToGoalRadians);
+/* 
               // Get a CvSink. This will capture Mats from the camera
               CvSink cvSink = CameraServer.getVideo();
               // Setup a CvSource. This will send images back to the Dashboard
