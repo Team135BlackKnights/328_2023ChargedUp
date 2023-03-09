@@ -12,19 +12,31 @@ public class intakeS extends SubsystemBase { //motors for intake
      public CANSparkMax leftWheels = new CANSparkMax(robotMap.intake.INTL_ID, MotorType.kBrushless);
      public CANSparkMax rightWheels = new CANSparkMax(robotMap.intake.INTR_ID, MotorType.kBrushless);
      public CANSparkMax inAndOut = new CANSparkMax(robotMap.intake.INTU_ID, MotorType.kBrushless); 
-     public static RelativeEncoder manipUpEncoder; 
+     public static RelativeEncoder inAndOutEncoder; 
      //public DigitalInput tooFarOut = new DigitalInput(0);
      //public DigitalInput tooFarIn = new DigitalInput(2);
      public intakeS(){
-          manipUpEncoder = inAndOut.getEncoder();
+          inAndOutEncoder = inAndOut.getEncoder();
           inAndOut.setSmartCurrentLimit(12);
           inAndOut.setIdleMode(IdleMode.kBrake);
           inAndOut.burnFlash();
      }
      public static void intakeEncoderReset() {
-          manipUpEncoder.setPosition(0);
+          inAndOutEncoder.setPosition(0);
+     }
+     public void intakeMoveIn(double speed){
+          if(inAndOutEncoder.getPosition()>-2){
+               inAndOut.set(speed);
+          }
+     }
+     public void intakeMoveOut(double speed){
+          if(inAndOutEncoder.getPosition()<5){
+               inAndOut.set(speed);
+          }
+          }
+     public void intakeStop(){
+     inAndOut.set(0);
      }
 
-
-
+//
 }

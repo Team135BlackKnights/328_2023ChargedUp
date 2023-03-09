@@ -17,7 +17,8 @@ import frc.robot.subsystems.intakeS;
 import frc.robot.subsystems.liftS;
 import frc.robot.commands.liftC;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.Autos.balanceScoreAuto;
 
 
 /**
@@ -30,11 +31,13 @@ public class robotContainer {
   // The robot's subsystems and commands are defined here...
   public static tankDriveS tankDriveS = new tankDriveS();
   public static intakeS _intakeS = new intakeS(); 
-  public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS);
+  public static liftS _liftS = new liftS();
+  public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS, _liftS);
+  public static balanceScoreAuto balanceScoreAuto = new balanceScoreAuto(tankDriveS, _intakeS, _liftS);
   public static XboxController ManipControl = new XboxController(1); 
   public static XboxController DriveControl = new XboxController(0);
 
-  public static liftS _liftS = new liftS();
+ 
   
   SendableChooser<Command> autoChooser = new SendableChooser<>();
 
@@ -45,7 +48,9 @@ public class robotContainer {
   public robotContainer() {
 
    // SmartDashboard.putData(autoChooser);
-    //autoChooser.addOption("Move out of community", driveOutOfCommunity);
+   autoChooser.addOption("Balancing", balanceScoreAuto); 
+   autoChooser.setDefaultOption("Move out of community", driveOutOfCommunity);
+   SmartDashboard.putData(autoChooser);
        _intakeS.setDefaultCommand(new intakeC(_intakeS));
     tankDriveS.setDefaultCommand(new tankDriveC(tankDriveS));
     _liftS.setDefaultCommand(new liftC(_liftS));    
@@ -73,8 +78,7 @@ public class robotContainer {
    */
   public Command getAutonomousCommand() {
     System.out.print("autonomous obtained");
-    //return autoChooser.getSelected();
-  return driveOutOfCommunity;
+    return autoChooser.getSelected();
   }
 
 }

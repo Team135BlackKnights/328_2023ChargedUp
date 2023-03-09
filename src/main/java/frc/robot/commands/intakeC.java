@@ -9,20 +9,20 @@ public class intakeC extends CommandBase {
     public final intakeS intake;
     // a boolean is a true false statement
     boolean isFinished = false;
-  double motorSpeedHandling  = .2;
+  double motorSpeedHandling  = .1;
 boolean holdSomething = false; 
     public intakeC(intakeS subsystem) {
         intake = subsystem;
         addRequirements(subsystem);
     }
     public void initialize(){
-      intakeS.intakeEncoderReset();
 
       isFinished = false;
       
     }
 
     public void execute(){
+      SmartDashboard.putNumber("in and out value", intake.inAndOutEncoder.getPosition());
       SmartDashboard.putNumber("claw current", intake.inAndOut.getOutputCurrent());
       SmartDashboard.putNumber("left wheels current", intake.leftWheels.getOutputCurrent());
       SmartDashboard.putNumber("right wheels current", intake.rightWheels.getOutputCurrent());
@@ -32,8 +32,7 @@ boolean holdSomething = false;
         //while (intakeS.ManipUpEncoder.getPosition() != 30/42 ) {
         //intake.inAndOut.set(motorSpeedHandling);
         //closes the arms to a 30 degree angle
-        intake.inAndOut.set(-motorSpeedHandling);
-        
+          intake.intakeMoveIn(-motorSpeedHandling);
       }
  
       else if (robotContainer.ManipControl.getBButton() == true) {
@@ -41,11 +40,12 @@ boolean holdSomething = false;
      // while (intakeS.ManipUpEncoder.getPosition() != 60/42 ) {
         //intake.inAndOut.set(motorSpeedHandling); 
              //closes the arms to a 60 degree angle
-             intake.inAndOut.set(motorSpeedHandling);
-      
+             if (intake.inAndOutEncoder.getPosition()<5){
+              intake.intakeMoveOut(motorSpeedHandling);
+             }            
      }
       else {
-        intake.inAndOut.set(0);
+        intake.intakeStop();
       }
 
       if (robotContainer.ManipControl.getRightBumper() == true) { 
@@ -59,8 +59,8 @@ boolean holdSomething = false;
         //Pushes things out with wheels
       }
       else if (robotContainer.ManipControl.getRightTriggerAxis() >= .69){
-        intake.leftWheels.set(1);
-       intake.rightWheels.set(-1);
+        intake.leftWheels.set(.85);
+       intake.rightWheels.set(-.85);
         //Pushes faster
       }
         
