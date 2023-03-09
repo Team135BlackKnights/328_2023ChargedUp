@@ -8,8 +8,9 @@ public class balanceScoreAuto extends SequentialCommandGroup {
     public balanceScoreAuto(tankDriveS tank, intakeS intake, liftS lift){
         shootOutC shootOutL = new shootOutC(tank,intake,1,.65);
     flipDown flipDownL = new flipDown(lift, intake, 3, .7);
-    encoderDriveC encoderDriveL = new encoderDriveC(tank,21,4.2);
+    encoderDriveC encoderDriveL = new encoderDriveC(tank,35,5);
+    basicAuto basicAutoL = new basicAuto(tank, .3, .6);
     turnAuto turnAutoL = new turnAuto(tank,.85,.4);
-    addCommands(flipDownL, shootOutL,encoderDriveL,turnAutoL);
+    addCommands(flipDownL, shootOutL,encoderDriveL,basicAutoL,turnAutoL);
     }
 }

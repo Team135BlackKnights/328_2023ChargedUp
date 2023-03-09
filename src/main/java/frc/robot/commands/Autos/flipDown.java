@@ -44,7 +44,7 @@ boolean isFinished;
                  
              }
         }else{
-            while (lift.flipMotorEncoder.getPosition()<20) { 
+            while (lift.flipMotorEncoder.getPosition()<40) { 
             
                 lift.moveLiftDown(autoSpeed);
                  
