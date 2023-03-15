@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.tankDriveS;
 import frc.robot.subsystems.intakeS;
 import frc.robot.subsystems.liftS;
+import frc.robot.commands.Macros.*;
 
   public class driveAuto extends SequentialCommandGroup {
   public driveAuto(tankDriveS drive, intakeS intake, liftS lift){

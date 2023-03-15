@@ -3,6 +3,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.subsystems.tankDriveS;
 import frc.robot.subsystems.intakeS;
 import frc.robot.subsystems.liftS;
+import frc.robot.commands.Macros.*;
 
 public class balanceAuto extends SequentialCommandGroup {
     public balanceAuto(tankDriveS tank, intakeS intake, liftS lift){

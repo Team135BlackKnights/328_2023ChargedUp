@@ -18,7 +18,7 @@ import frc.robot.subsystems.liftS;
 import frc.robot.commands.liftC;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.Autos.balanceScoreAuto;
+import frc.robot.commands.Autos.balanceAuto;
 
 
 /**
@@ -33,7 +33,7 @@ public class robotContainer {
   public static intakeS _intakeS = new intakeS(); 
   public static liftS _liftS = new liftS();
   public static driveAuto driveOutOfCommunity = new driveAuto(tankDriveS, _intakeS, _liftS);
-  public static balanceScoreAuto balanceScoreAuto = new balanceScoreAuto(tankDriveS, _intakeS, _liftS);
+  public static balanceAuto balanceScoreAuto = new balanceAuto(tankDriveS, _intakeS, _liftS);
   public static XboxController ManipControl = new XboxController(1); 
   public static XboxController DriveControl = new XboxController(0);
 

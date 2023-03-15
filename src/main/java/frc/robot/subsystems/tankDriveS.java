@@ -13,7 +13,7 @@ public class tankDriveS extends SubsystemBase{
 
 Encoder encoder = new Encoder(0, 1);
     //motors for drive
-
+    public ADXRS450_Gyro gyroscopeAdxrs450_Gyro = new ADXRS450_Gyro();
     public DifferentialDrive tank;
     public CANSparkMax frontLeft = new CANSparkMax(robotMap.drive.FL_ID, MotorType.kBrushless);
     public CANSparkMax frontRight = new CANSparkMax(robotMap.drive.FR_ID, MotorType.kBrushless);
