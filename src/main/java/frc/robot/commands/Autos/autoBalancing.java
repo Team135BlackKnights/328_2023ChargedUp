@@ -7,20 +7,23 @@ public class autoBalancing extends CommandBase {
 public tankDriveS drive;
 boolean isFinished = false;
 public tankDriveS subsystem;
-double error = 0.0;
+double gyroError = 0.0;
     public autoBalancing(tankDriveS drive){
         drive = subsystem;
         addRequirements(subsystem);
 
     }
     public void initialize(){
-        while(error >= 358 && error  <= 2){
+        while(gyroError >= 358 && gyroError  <= 2){
             drive.tankDrive(-.7,.7);
             //error = gyroscope output, idk 
-            SmartDashboard.putNumber("gyro alignment",error);
+            SmartDashboard.putNumber("gyro alignment",gyroError);
         }
     }
     public void execute(){
-
+        gyroError%= 30; //just so it won't output anything greater than 1, gyro should keep outputting a decimal that gets closer and closer to zero, which should allow us to slow down effectively.
+        drive.tankDrive(-.5*gyroError, .5*gyroError);
+            SmartDashboard.putNumber("gyro alignment",gyroError);
+            
     }
 }

@@ -54,13 +54,13 @@ boolean holdSomething = false;
           //Takes stuff in with wheels
       }
       else if (robotContainer.ManipControl.getLeftBumper() == true) { 
-        intake.leftWheels.set(-0.5);
-        intake.rightWheels.set(0.5);
+        intake.leftWheels.set(-0.4);
+        intake.rightWheels.set(0.4);
         //Pushes things out with wheels
       }
       else if (robotContainer.ManipControl.getRightTriggerAxis() >= .69){
-        intake.leftWheels.set(.85);
-       intake.rightWheels.set(-.85);
+        intake.leftWheels.set(.8);
+       intake.rightWheels.set(-.8);
         //Pushes faster
       }
         

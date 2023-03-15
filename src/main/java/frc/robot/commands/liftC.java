@@ -18,7 +18,7 @@ public void execute(){
 SmartDashboard.putNumber("lift encoder value", lift.flipMotorEncoder.getPosition());
 if (robotContainer.ManipControl.getPOV() == POV_UP)  {
     //if (lift.flipMotorEncoder.getPosition()>5-lift.changer) { 
-        lift.moveLiftUp(-0.85);
+        lift.moveLiftUp(-0.75);
    // }
 }
 else if (robotContainer.ManipControl.getPOV() == POV_DOWN) {
