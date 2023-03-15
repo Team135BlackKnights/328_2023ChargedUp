@@ -1,11 +1,11 @@
-package frc.robot.commands.Autos;
+package frc.robot.commands.Macros;
 import frc.robot.subsystems.intakeS;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import com.revrobotics.CANSparkMax.IdleMode;
 import frc.robot.subsystems.liftS;
 
-public class flipDown extends CommandBase {
+public class manipMove extends CommandBase {
 double seconds;
 double autoSpeed;
 boolean flip;
@@ -14,7 +14,7 @@ boolean isFinished;
     public final liftS lift;
     
     Timer timeElapsed= new Timer();
-    public flipDown(liftS liftS,intakeS subsystem, double desiredTime, double MotorSpeed ){
+    public manipMove(liftS liftS,intakeS subsystem, double desiredTime, double MotorSpeed ){
         seconds = desiredTime;
         intake = subsystem;
         lift = liftS;

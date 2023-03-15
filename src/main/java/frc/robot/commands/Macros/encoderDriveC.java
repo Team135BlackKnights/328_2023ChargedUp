@@ -1,4 +1,4 @@
-package frc.robot.commands.Autos;
+package frc.robot.commands.Macros;
 import com.revrobotics.RelativeEncoder;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj2.command.CommandBase;

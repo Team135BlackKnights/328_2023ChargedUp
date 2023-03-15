@@ -1,4 +1,4 @@
-package frc.robot.commands.Autos;
+/*package frc.robot.commands.Macros;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.tankDriveS;
 import edu.wpi.first.wpilibj.Timer;
@@ -24,6 +24,7 @@ public class gTurnAuto extends CommandBase {
         if(timeElapsed.get() >= neededTime) {
             drive.tankDrive(0.4,0.4);
         }
+
         else{
             end();
         }
@@ -32,3 +33,4 @@ public class gTurnAuto extends CommandBase {
         drive.tankDrive(0,0);
     }
 }
+*/

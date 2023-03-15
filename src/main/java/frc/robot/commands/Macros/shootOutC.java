@@ -1,4 +1,4 @@
-package frc.robot.commands.Autos;
+package frc.robot.commands.Macros;
 import frc.robot.subsystems.intakeS;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;

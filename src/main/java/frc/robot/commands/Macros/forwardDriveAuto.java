@@ -1,16 +1,16 @@
-package frc.robot.commands.Autos;
+package frc.robot.commands.Macros;
 import frc.robot.subsystems.tankDriveS;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
 
-public class basicAuto extends CommandBase {
+public class forwardDriveAuto extends CommandBase {
 long timeStart;
 double seconds;
 double autoSpeed;
     public final tankDriveS drive;
     Timer timeElapsed= new Timer();
-    public basicAuto(tankDriveS subsystem, double desiredTime, double MotorSpeed ){
+    public forwardDriveAuto(tankDriveS subsystem, double desiredTime, double MotorSpeed ){
         seconds = desiredTime;
         drive = subsystem;
         autoSpeed = MotorSpeed;
@@ -18,7 +18,7 @@ double autoSpeed;
         
     }
     public void initialize(){
-        System.out.print("Running basicAuto...");
+        System.out.print("Running forwardDriveAuto...");
     timeElapsed.start();
     }
     public void execute() {
