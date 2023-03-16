@@ -1,5 +1,4 @@
 package frc.robot.commands.Macros;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.tankDriveS;
@@ -15,8 +14,9 @@ double gyroError = 0.0;
         
     }
     public void initialize(){
-        
+        drive.gyro.calibrate();
         while(gyroError >= 358 && gyroError  <= 2){
+            gyroError = drive.gyro.getAngle();
             drive.tankDrive(-.7,.7);
             //error = gyroscope output, idk 
             SmartDashboard.putNumber("gyro alignment",gyroError);

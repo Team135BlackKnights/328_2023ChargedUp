@@ -10,10 +10,9 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 public class tankDriveS extends SubsystemBase{ 
-
-Encoder encoder = new Encoder(0, 1);
+    public ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+    Encoder encoder = new Encoder(0, 1);
     //motors for drive
-    public ADXRS450_Gyro gyroscopeAdxrs450_Gyro = new ADXRS450_Gyro();
     public DifferentialDrive tank;
     public CANSparkMax frontLeft = new CANSparkMax(robotMap.drive.FL_ID, MotorType.kBrushless);
     public CANSparkMax frontRight = new CANSparkMax(robotMap.drive.FR_ID, MotorType.kBrushless);
@@ -21,7 +20,7 @@ Encoder encoder = new Encoder(0, 1);
     public CANSparkMax backRight = new CANSparkMax(robotMap.drive.BR_ID, MotorType.kBrushless);
     public MotorControllerGroup autoMotors;
     public Encoder LeftSide, RightSide; 
-    public ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+  
     //connects encoders to drive motorgroups
     public static RelativeEncoder lFront, lBack, rFront, rBack;  
     public tankDriveS(){  

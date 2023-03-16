@@ -7,7 +7,7 @@ import frc.robot.subsystems.tankDriveS;
 public class encoderDriveC extends CommandBase{
     private static final int kEncoderCountsPerRevolution = 42; // adjust this to match your encoder
     private static final double kWheelDiameterInches = 6.88;
-    private static final double kEncoderDistancePerPulse = (Math.PI * kWheelDiameterInches) / kEncoderCountsPerRevolution;
+ 
     double distance;
     double speed;
     private final RelativeEncoder m_leftEncoder;
