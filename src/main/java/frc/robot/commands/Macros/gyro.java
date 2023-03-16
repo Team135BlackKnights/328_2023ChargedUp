@@ -10,6 +10,7 @@ public tankDriveS subsystem;
 double gyroError = 0.0;
     public gyro(tankDriveS drive){
         drive = subsystem;
+        //when you say the word "drive" you are refering to the subsystem tankDriveS
         addRequirements(subsystem);
         
     }
