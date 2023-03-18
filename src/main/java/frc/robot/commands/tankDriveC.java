@@ -1,5 +1,4 @@
 package frc.robot.commands;
-import com.revrobotics.CANSparkMax.IdleMode;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotContainer;
@@ -15,17 +14,18 @@ public class tankDriveC extends CommandBase{
       }
       @Override
   public void initialize() {
-    // drive.navx.calibrate();
-
-    drive.frontLeft.setIdleMode(IdleMode.kCoast);
-    drive.frontRight.setIdleMode(IdleMode.kCoast);
-    drive.backLeft.setIdleMode(IdleMode.kCoast);
-    drive.backRight.setIdleMode(IdleMode.kCoast);
   }
   @Override
   public void execute() {
-
-    SmartDashboard.putNumber("x", (drive.gyro.getAngle()%360));
+  double x = tankDriveS.limelightNetworkTable.getEntry("tx").getDouble(0.0); 
+  double y = tankDriveS.limelightNetworkTable.getEntry("ty").getDouble(0.0); 
+  double area = tankDriveS.limelightNetworkTable.getEntry("ta").getDouble(0.0); 
+    SmartDashboard.putNumber("x distance from target",x);
+    SmartDashboard.putNumber("y distance from target",y);
+    SmartDashboard.putNumber("target area",area);
+    SmartDashboard.putNumber("y axis rotation", drive.navx.getRoll());
+    SmartDashboard.putNumber("x axis rotation",drive.navx.getYaw());
+    SmartDashboard.putNumber("z axis notation (what we're going to use for balance)", drive.navx.getPitch());
   
 double leftSpeed = robotContainer.DriveControl.getLeftY();
 double rightSpeed = robotContainer.DriveControl.getRightY();

@@ -22,7 +22,7 @@ boolean holdSomething = false;
     }
 
     public void execute(){
-      SmartDashboard.putNumber("in and out value", intake.inAndOutEncoder.getPosition());
+      SmartDashboard.putNumber("in and out value", intakeS.inAndOutEncoder.getPosition());
       SmartDashboard.putNumber("claw current", intake.inAndOut.getOutputCurrent());
       SmartDashboard.putNumber("left wheels current", intake.leftWheels.getOutputCurrent());
       SmartDashboard.putNumber("right wheels current", intake.rightWheels.getOutputCurrent());

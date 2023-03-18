@@ -8,10 +8,14 @@ import frc.robot.robotMap;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import com.kauailabs.navx.frc.*;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
+
 public class tankDriveS extends SubsystemBase{ 
-    public ADXRS450_Gyro gyro = new ADXRS450_Gyro();
-    Encoder encoder = new Encoder(0, 1);
+ Encoder encoder = new Encoder(0, 1);
+    public AHRS navx = new AHRS();
     //motors for drive
     public DifferentialDrive tank;
     public CANSparkMax frontLeft = new CANSparkMax(robotMap.drive.FL_ID, MotorType.kBrushless);
@@ -20,10 +24,11 @@ public class tankDriveS extends SubsystemBase{
     public CANSparkMax backRight = new CANSparkMax(robotMap.drive.BR_ID, MotorType.kBrushless);
     public MotorControllerGroup autoMotors;
     public Encoder LeftSide, RightSide; 
-  
+    public static NetworkTable limelightNetworkTable;
     //connects encoders to drive motorgroups
     public static RelativeEncoder lFront, lBack, rFront, rBack;  
     public tankDriveS(){  
+        limelightNetworkTable = NetworkTableInstance.getDefault().getTable("limelight");
     //connects encoders to drive motors
         lFront= frontLeft.getEncoder();
         lBack = backLeft.getEncoder();
@@ -76,5 +81,8 @@ public class tankDriveS extends SubsystemBase{
         frontRight.burnFlash();
         backLeft.burnFlash();
         backRight.burnFlash();
+    }
+    public void resetNavX(){
+        navx.calibrate();
     }
 }

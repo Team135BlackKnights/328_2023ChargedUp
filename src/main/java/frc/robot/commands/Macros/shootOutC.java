@@ -26,7 +26,7 @@ double autoSpeed;
     @Override 
     public void initialize(){
         System.out.print("intializing shootOut...");
-    intake.intakeEncoderReset();
+    intakeS.intakeEncoderReset();
     //this resets the encoder(a thing used to show how much a motor has moved)
     timeElapsed.start();
     //starts a timer 
