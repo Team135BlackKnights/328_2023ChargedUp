@@ -28,7 +28,7 @@ public class tankDriveS extends SubsystemBase{
     //connects encoders to drive motorgroups
     public static RelativeEncoder lFront, lBack, rFront, rBack;  
     public tankDriveS(){  
-        limelightNetworkTable = NetworkTableInstance.getDefault().getTable("limelight");
+        limelightNetworkTable = NetworkTableInstance.getDefault().getTable("limelight-turret");
     //connects encoders to drive motors
         lFront= frontLeft.getEncoder();
         lBack = backLeft.getEncoder();

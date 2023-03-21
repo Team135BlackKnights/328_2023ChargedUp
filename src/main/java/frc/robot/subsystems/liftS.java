@@ -25,7 +25,8 @@ public class liftS extends SubsystemBase{
    }
     public void moveLiftDown(double speed){
      // if (flipMotorEncoder.getPosition() < 95+changer/*-changer*/) { //could be wrong
-         flipMotor.set(speed);
+      unlockLift();   
+      flipMotor.set(speed);
      /* }
       else{
          stopLift();
@@ -35,7 +36,8 @@ public class liftS extends SubsystemBase{
     }
     public void moveLiftUp(double speed){
      // if (flipMotorEncoder.getPosition() > 5-changer/*-changer*/){ //could be wrong. -147 PERHAPS
-         flipMotor.set(speed);
+      unlockLift();   
+      flipMotor.set(speed);
      /* }
       else{
          stopLift();
@@ -43,7 +45,8 @@ public class liftS extends SubsystemBase{
       */
     }
     public void stopLift(){
-       flipMotor.set(0);
+      lockLift(); 
+      flipMotor.set(0);
     }
     public void resetEncoders() {
        flipMotorEncoder.setPosition(0);

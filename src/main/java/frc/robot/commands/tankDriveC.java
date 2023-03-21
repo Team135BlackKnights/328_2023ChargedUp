@@ -1,12 +1,14 @@
 package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotContainer;
 import frc.robot.subsystems.tankDriveS;
-
+import java.math.MathContext;
 public class tankDriveC extends CommandBase{
     private final tankDriveS drive;
-
+    double distance;
+    Integer targetType = 0;
     public tankDriveC(tankDriveS subsystem) {
         // Use addRequirements() here to declare subsystem dependencies.
         drive = subsystem;
@@ -17,11 +19,15 @@ public class tankDriveC extends CommandBase{
   }
   @Override
   public void execute() {
+    if (robotContainer.DriveControl.getYButtonPressed()){
+      targetType+=1;
+      targetType= targetType%2;
+    }
+    (tankDriveS.limelightNetworkTable.getEntry("pipeline")).setNumber(targetType);
+ 
   double x = tankDriveS.limelightNetworkTable.getEntry("tx").getDouble(0.0); 
   double y = tankDriveS.limelightNetworkTable.getEntry("ty").getDouble(0.0); 
   double area = tankDriveS.limelightNetworkTable.getEntry("ta").getDouble(0.0); 
-    SmartDashboard.putNumber("x distance from target",x);
-    SmartDashboard.putNumber("y distance from target",y);
     SmartDashboard.putNumber("target area",area);
     SmartDashboard.putNumber("y axis rotation", drive.navx.getRoll());
     SmartDashboard.putNumber("x axis rotation",drive.navx.getYaw());
@@ -42,7 +48,13 @@ double rightSpeed = robotContainer.DriveControl.getRightY();
 SmartDashboard.putNumber("Left Motor",-leftSpeed*speedMod);
 SmartDashboard.putNumber("Right Motor", rightSpeed*speedMod);
 drive.tankDrive(-leftSpeed*speedMod,rightSpeed*speedMod);
-}
+distance = Math.sqrt(x*x+y*y);
+SmartDashboard.putNumber("distance", distance);
+robotContainer.DriveControl.setRumble(RumbleType.kBothRumble, area);}
+
+
+
+
  
 
 @Override

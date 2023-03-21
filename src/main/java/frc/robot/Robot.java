@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
    */
   Thread m_visionThread;
   Thread m_visionThread2;
+  Thread thisIsAThread;
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
@@ -123,7 +124,6 @@ public class Robot extends TimedRobot {
     m_visionThread.start();
     */
     }
-
   /**
    * This function is called every 20 ms, no matter the mode. Use this for items like diagnostics
    * that you want ran during disabled, autonomous, teleoperated and test.
