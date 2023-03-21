@@ -29,11 +29,23 @@ public class Robot extends TimedRobot {
    * initialization code.
    */
   Thread m_visionThread;
+  Thread m_visionThread2;
   @Override
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new robotContainer();
+    m_visionThread2 = 
+            new Thread(
+            () -> {
+              // Get the UsbCamera from CameraServer
+              UsbCamera camera2Camera = CameraServer.startAutomaticCapture();
+              // Set the resolution
+              camera2Camera.setResolution(360, 240);
+              camera2Camera.setFPS(15);
+            });
+            m_visionThread2.setDaemon(true);
+            m_visionThread2.start();
     m_visionThread = 
             new Thread(
             () -> {
@@ -41,6 +53,7 @@ public class Robot extends TimedRobot {
               UsbCamera camera = CameraServer.startAutomaticCapture();
               // Set the resolution
               camera.setResolution(360, 240);
+              camera.setFPS(15);
             });
             m_visionThread.setDaemon(true);
             m_visionThread.start();

@@ -12,12 +12,17 @@ public class liftS extends SubsystemBase{
     public RelativeEncoder flipMotorEncoder = flipMotor.getEncoder();
     public int changer;
  public liftS() {
-     flipMotor.setIdleMode(IdleMode.kCoast);
+     flipMotor.setIdleMode(IdleMode.kBrake);
     flipMotor.enableVoltageCompensation(12);
     //flipMotor.setSmartCurrentLimit(30, 80);
     flipMotor.burnFlash();
  }
-   
+   public void lockLift(){
+      flipMotor.setIdleMode(IdleMode.kBrake);
+   }
+   public void unlockLift(){
+      flipMotor.setIdleMode(IdleMode.kCoast);
+   }
     public void moveLiftDown(double speed){
      // if (flipMotorEncoder.getPosition() < 95+changer/*-changer*/) { //could be wrong
          flipMotor.set(speed);
