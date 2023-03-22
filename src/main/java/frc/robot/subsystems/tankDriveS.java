@@ -8,7 +8,7 @@ import frc.robot.robotMap;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-//import com.kauailabs.navx.frc.*;
+import com.kauailabs.navx.frc.*;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
@@ -18,6 +18,7 @@ public class tankDriveS extends SubsystemBase{
    //// public AHRS navx = new AHRS();
     //motors for drive
     public DifferentialDrive tank;
+    public AHRS navx = new AHRS(robotMap.navX.navXPort);
     public CANSparkMax frontLeft = new CANSparkMax(robotMap.drive.FL_ID, MotorType.kBrushless);
     public CANSparkMax frontRight = new CANSparkMax(robotMap.drive.FR_ID, MotorType.kBrushless);
     public CANSparkMax backLeft = new CANSparkMax(robotMap.drive.BL_ID, MotorType.kBrushless);
@@ -55,8 +56,7 @@ public class tankDriveS extends SubsystemBase{
         MotorControllerGroup leftMotors = new MotorControllerGroup(frontLeft, backLeft); 
         MotorControllerGroup rightMotors = new MotorControllerGroup(frontRight, backRight);
         autoMotors = new MotorControllerGroup(frontLeft,backLeft,frontRight,backRight);
-    //these are the motorgroups
-        
+        navx.reset();
         tank = new DifferentialDrive(leftMotors, rightMotors);
     }
     public void tankDrive(double left, double right) {

@@ -2,6 +2,8 @@ package frc.robot.commands.Macros;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.tankDriveS;
+import com.kauailabs.navx.frc.*;
+
 public class gyro extends CommandBase {
 public tankDriveS drive;
 boolean isFinished = false;
@@ -15,7 +17,7 @@ double gyroError = 0.0;
     public void initialize(){
         drive.resetNavX();
         while(gyroError >= 358 && gyroError  <= 2){
-           // gyroError = drive.navx.getPitch();
+            gyroError = drive.navx.getPitch();
             gyroError = gyroError%360;
             drive.tankDrive(-.7,.7);
             SmartDashboard.putNumber("gyro alignment",gyroError);

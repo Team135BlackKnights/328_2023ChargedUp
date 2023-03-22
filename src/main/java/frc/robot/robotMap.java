@@ -1,4 +1,8 @@
 package frc.robot;
+
+import edu.wpi.first.wpilibj.I2C;
+import edu.wpi.first.wpilibj.SPI;
+
 public interface robotMap {
     public interface drive {
         public final static int 
@@ -17,6 +21,9 @@ public interface robotMap {
     public interface lift {
             public final static int
             flipMotor_ID = 3;
+    }
+    public interface navX {
+        public SPI.Port navXPort = SPI.Port.kMXP;
     }
 }
 
