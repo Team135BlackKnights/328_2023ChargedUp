@@ -8,14 +8,14 @@ import frc.robot.robotMap;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.kauailabs.navx.frc.*;
+//import com.kauailabs.navx.frc.*;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class tankDriveS extends SubsystemBase{ 
  Encoder encoder = new Encoder(0, 1);
-    public AHRS navx = new AHRS();
+   //// public AHRS navx = new AHRS();
     //motors for drive
     public DifferentialDrive tank;
     public CANSparkMax frontLeft = new CANSparkMax(robotMap.drive.FL_ID, MotorType.kBrushless);
@@ -83,6 +83,6 @@ public class tankDriveS extends SubsystemBase{
         backRight.burnFlash();
     }
     public void resetNavX(){
-        navx.calibrate();
+     //   navx.calibrate();
     }
 }

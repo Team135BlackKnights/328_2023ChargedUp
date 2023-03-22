@@ -15,7 +15,7 @@ double gyroError = 0.0;
     public void initialize(){
         drive.resetNavX();
         while(gyroError >= 358 && gyroError  <= 2){
-            gyroError = drive.navx.getPitch();
+           // gyroError = drive.navx.getPitch();
             gyroError = gyroError%360;
             drive.tankDrive(-.7,.7);
             SmartDashboard.putNumber("gyro alignment",gyroError);
@@ -23,7 +23,7 @@ double gyroError = 0.0;
     }
     @Override
     public void execute(){
-        gyroError = drive.navx.getPitch();
+      //  gyroError = drive.navx.getPitch();
         gyroError = gyroError%360;
         if (gyroError >358 && gyroError<2){
         gyroError%= 30; //this is a modulus function same call as python solely exists just so it won't output anything greater than 1, gyro should keep outputting a decimal that gets closer and closer to zero, which should allow us to slow down effectively.

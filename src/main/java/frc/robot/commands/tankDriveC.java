@@ -5,10 +5,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotContainer;
 import frc.robot.subsystems.tankDriveS;
 import java.math.MathContext;
+import edu.wpi.first.networktables.NetworkTableInstance;
 public class tankDriveC extends CommandBase{
     private final tankDriveS drive;
     double distance;
     Integer targetType = 0;
+    Integer pipe=1;
     public tankDriveC(tankDriveS subsystem) {
         // Use addRequirements() here to declare subsystem dependencies.
         drive = subsystem;
@@ -29,9 +31,9 @@ public class tankDriveC extends CommandBase{
   double y = tankDriveS.limelightNetworkTable.getEntry("ty").getDouble(0.0); 
   double area = tankDriveS.limelightNetworkTable.getEntry("ta").getDouble(0.0); 
     SmartDashboard.putNumber("target area",area);
-    SmartDashboard.putNumber("y axis rotation", drive.navx.getRoll());
-    SmartDashboard.putNumber("x axis rotation",drive.navx.getYaw());
-    SmartDashboard.putNumber("z axis notation (what we're going to use for balance)", drive.navx.getPitch());
+  //  SmartDashboard.putNumber("y axis rotation", drive.navx.getRoll());
+  //  SmartDashboard.putNumber("x axis rotation",drive.navx.getYaw());
+    //SmartDashboard.putNumber("z axis notation (what we're going to use for balance)", drive.navx.getPitch());
   
 double leftSpeed = robotContainer.DriveControl.getLeftY();
 double rightSpeed = robotContainer.DriveControl.getRightY();
@@ -45,12 +47,20 @@ double rightSpeed = robotContainer.DriveControl.getRightY();
   else{/*if (robotContainer.DriveControl.getLeftBumper() == false){ */
     speedMod = 1;
   }
+  if (robotContainer.DriveControl.getYButton() == true){
+    if (pipe==0){
+      pipe=1;
+    }else{
+      pipe=0;
+    }
+    NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(pipe);
+  }
 SmartDashboard.putNumber("Left Motor",-leftSpeed*speedMod);
 SmartDashboard.putNumber("Right Motor", rightSpeed*speedMod);
 drive.tankDrive(-leftSpeed*speedMod,rightSpeed*speedMod);
 distance = Math.sqrt(x*x+y*y);
 SmartDashboard.putNumber("distance", distance);
-robotContainer.DriveControl.setRumble(RumbleType.kBothRumble, area);}
+robotContainer.DriveControl.setRumble(RumbleType.kBothRumble, area*2);}//the two makes it vibrate more
 
 
 
