@@ -37,10 +37,6 @@ double correction;
             speed = correction*.1;
             drive.tankDrive(-speed,speed);
         }
-        else if (Math.abs(correction)<.5){
-            speed = correction*.1;
-            drive.tankDrive(speed,-speed);
-        }
         else{
         drive.tankDrive(0,0);
         isFinished = true;

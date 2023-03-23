@@ -6,7 +6,7 @@ import frc.robot.subsystems.tankDriveS;
 
 public class encoderDriveF extends CommandBase{
     private static final int kEncoderCountsPerRevolution = 42; // adjust this to match your encoder
-    private static final double kWheelDiameterInches = 6.88;
+    private static final double kWheelDiameterInches = 6;
  
     double distance;
     double speed;
@@ -22,7 +22,10 @@ public class encoderDriveF extends CommandBase{
         m_drive = drive.autoMotors;
         speed = speedInchesPerSecond;
         distance=distanceInches;
-        addRequirements(drive);        
+        addRequirements(drive);
+
+
+        
     }
     @Override
     public void initialize(){
@@ -37,13 +40,16 @@ public class encoderDriveF extends CommandBase{
         int targetCounts = (int)(revolutions * kEncoderCountsPerRevolution);
         m_leftEncoder.setPosition(0);
         m_rightEncoder.setPosition(0);
-        while (m_leftEncoder.getPosition() > targetCounts && m_rightEncoder.getPosition() > targetCounts) {
+        System.out.println("Second Auto Start");
+
+        while (m_leftEncoder.getPosition() < targetCounts && m_rightEncoder.getPosition() < targetCounts) {
             double speed = Math.min(speedInchesPerSecond, (targetCounts + m_leftEncoder.getPosition()) / kEncoderCountsPerRevolution);
-            drive.tankDrive((speed*0.5),(-speed*0.5)); // flip speed values
+            drive.tankDrive((speed*.5), (-speed*.5)); 
         }
-        m_drive.stopMotor();
+        m_drive.stopMotor();//replace with actual stop tank.
+        System.out.println("Second Auto End");
         isFinished = true;
-}
+    }
     @Override
     public boolean isFinished() {
         return true;

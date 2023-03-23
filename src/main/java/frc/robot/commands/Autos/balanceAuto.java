@@ -11,11 +11,12 @@ public class balanceAuto extends SequentialCommandGroup {
         //shoots the cube out for 1 second at a speed of 65% power
         manipMove flipDownL = new manipMove(lift, intake, 3, .7);
     //moves the intake down for 3 seconds at a speed of 70% power
-    encoderDriveC encoderDriveL = new encoderDriveC(tank,39,1);
+    encoderDriveC encoderDriveL = new encoderDriveC(tank,40,1);
     //drives 35 inches at a speed of 5 inches per second
-    encoderDriveF encoderDriveForward = new encoderDriveF(tank,16,1);
-        //drive 
-    gyro gyroL = new gyro(tank, 0);//FIX THIS
+    encoderDriveF encoderDriveForward = new encoderDriveF(tank,15,1);
+        //drive
+        
+    gyro gyroL = new gyro(tank, 0);
     turnAuto turnAutoL = new turnAuto(tank,.85,.4);
     //
     addCommands(flipDownL, shootOutL,encoderDriveL,encoderDriveForward,gyroL,turnAutoL);

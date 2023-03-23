@@ -6,7 +6,7 @@ import frc.robot.subsystems.tankDriveS;
 
 public class encoderDriveC extends CommandBase{
     private static final int kEncoderCountsPerRevolution = 42; // adjust this to match your encoder
-    private static final double kWheelDiameterInches = 6.88;
+    private static final double kWheelDiameterInches = 6;
  
     double distance;
     double speed;
@@ -40,12 +40,15 @@ public class encoderDriveC extends CommandBase{
         int targetCounts = (int)(revolutions * kEncoderCountsPerRevolution);
         m_leftEncoder.setPosition(0);
         m_rightEncoder.setPosition(0);
+        System.out.println("Main Auto Start");
 
         while (m_leftEncoder.getPosition() < targetCounts && m_rightEncoder.getPosition() < targetCounts) {
             double speed = Math.min(speedInchesPerSecond, (targetCounts - m_leftEncoder.getPosition()) / kEncoderCountsPerRevolution);
             drive.tankDrive((-speed*.5), (speed*.5)); 
         }
         m_drive.stopMotor();//replace with actual stop tank.
+        drive.resetEncoders();
+        System.out.println("Main Auto End");
         isFinished = true;
     }
     @Override
