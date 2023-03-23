@@ -22,7 +22,7 @@ public class encoderDriveC extends CommandBase{
         m_drive = drive.autoMotors;
         speed = speedInchesPerSecond;
         distance=distanceInches;
-        addRequirements(drive);
+        addRequirements(drive);        
     }
     @Override
     public void initialize(){
@@ -37,14 +37,13 @@ public class encoderDriveC extends CommandBase{
         int targetCounts = (int)(revolutions * kEncoderCountsPerRevolution);
         m_leftEncoder.setPosition(0);
         m_rightEncoder.setPosition(0);
-
-        while (m_leftEncoder.getPosition() < targetCounts && m_rightEncoder.getPosition() < targetCounts) {
-            double speed = Math.min(speedInchesPerSecond, (targetCounts - m_leftEncoder.getPosition()) / kEncoderCountsPerRevolution);
-            drive.tankDrive((-speed*.5), (speed*.5)); //might need flip
+        while (m_leftEncoder.getPosition() > -targetCounts && m_rightEncoder.getPosition() > -targetCounts) {
+            double speed = Math.min(speedInchesPerSecond, (targetCounts + m_leftEncoder.getPosition()) / kEncoderCountsPerRevolution);
+            drive.tankDrive(speed*0.5, -speed*0.5); // flip speed values
         }
-        m_drive.stopMotor();//replace with actual stop tank.
+        m_drive.stopMotor();
         isFinished = true;
-    }
+}
     @Override
     public boolean isFinished() {
         return true;
