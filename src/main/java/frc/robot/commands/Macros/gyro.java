@@ -8,13 +8,16 @@ public class gyro extends CommandBase {
 public tankDriveS drive;
 boolean isFinished = false;
 public tankDriveS subsystem;
-double gyroError = 0.0;
+double currentAngle = 0.0;
+double desired;
     public gyro(tankDriveS drive){
         drive = subsystem;
         addRequirements(subsystem);
     }
     @Override
-    public void initialize(){
+    public void initialize(double desiredAngle){
+        desired = desiredAngle;
+        System.out.print("initializing Balancer");
         /*while(gyroError >= 358 && gyroError  <= 2){
             gyroError = drive.navx.getPitch();
             gyroError = gyroError%360;
@@ -25,16 +28,17 @@ double gyroError = 0.0;
     }
     @Override
     public void execute(){
-        gyroError = drive.navx.getPitch();
-        SmartDashboard.putNumber(("gyro raw"),gyroError);
-        gyroError = gyroError%360;
-        if (gyroError >358 && gyroError<2){
-        gyroError%= 30; //this is a modulus function same call as python solely exists just so it won't output anything greater than 1, gyro should keep outputting a decimal that gets closer and closer to zero, which should allow us to slow down effectively.
-        drive.tankDrive(-.5*gyroError, .5*gyroError);
-            SmartDashboard.putNumber("gyro alignment",gyroError);
+        System.out.print("Executing Balancer");
+        currentAngle = drive.navx.getPitch(); //
+        SmartDashboard.putNumber("current Angle", currentAngle);
+        correction = desired-currentAngle;
+        if (Math.abs(correction)>.5){
+            speed = correction*.1;
+            drive.tankDrive(-speed,speed);
         }else{
         drive.tankDrive(0,0);
         isFinished = true;
+        }
         }
     }
     @Override
