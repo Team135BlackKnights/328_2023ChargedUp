@@ -23,7 +23,7 @@ public interface robotMap {
             flipMotor_ID = 3;
     }
     public interface navX {
-        public SPI.Port navXPort = SPI.Port.kMXP;
+        public I2C.Port navXPort = I2C.Port.kOnboard;
     }
 }
 

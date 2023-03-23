@@ -7,36 +7,47 @@ import com.kauailabs.navx.frc.*;
 public class gyro extends CommandBase {
 public tankDriveS drive;
 boolean isFinished = false;
-public tankDriveS subsystem;
-double gyroError = 0.0;
-    public gyro(tankDriveS drive){
+double currentAngle = 0.0;
+double desired;
+double speed;
+double correction;
+    public gyro(tankDriveS subsystem, double desiredAngle){
         drive = subsystem;
+        desired = desiredAngle;
         addRequirements(subsystem);
     }
     @Override
     public void initialize(){
-        drive.resetNavX();
-        while(gyroError >= 358 && gyroError  <= 2){
+        System.out.print("initializing Balancer");
+        /*while(gyroError >= 358 && gyroError  <= 2){
             gyroError = drive.navx.getPitch();
             gyroError = gyroError%360;
             drive.tankDrive(-.7,.7);
             SmartDashboard.putNumber("gyro alignment",gyroError);
         }
+        */
     }
     @Override
     public void execute(){
-      //  gyroError = drive.navx.getPitch();
-        gyroError = gyroError%360;
-        if (gyroError >358 && gyroError<2){
-        gyroError%= 30; //this is a modulus function same call as python solely exists just so it won't output anything greater than 1, gyro should keep outputting a decimal that gets closer and closer to zero, which should allow us to slow down effectively.
-        drive.tankDrive(-.5*gyroError, .5*gyroError);
-            SmartDashboard.putNumber("gyro alignment",gyroError);
+        System.out.print("Executing Balancer");
+        currentAngle = drive.navx.getRoll(); //
+        SmartDashboard.putNumber("current Angle", currentAngle);
+        correction = desired-currentAngle;
+        if (Math.abs(correction)>.5){
+            speed = correction*.1;
+            drive.tankDrive(-speed,speed);
         }
+        else if (Math.abs(correction)<.5){
+            speed = correction*.1;
+            drive.tankDrive(speed,-speed);
+        }
+        else{
+        drive.tankDrive(0,0);
         isFinished = true;
-
-    }
+        }
+        }
     @Override
     public boolean isFinished(){
-        return true;
+        return isFinished;
     }
 }

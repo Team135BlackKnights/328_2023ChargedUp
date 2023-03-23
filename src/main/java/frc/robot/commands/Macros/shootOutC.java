@@ -25,6 +25,7 @@ double autoSpeed;
     }
     @Override 
     public void initialize(){
+        drive.resetNavX();
         System.out.print("intializing shootOut...");
     intakeS.intakeEncoderReset();
     //this resets the encoder(a thing used to show how much a motor has moved)
