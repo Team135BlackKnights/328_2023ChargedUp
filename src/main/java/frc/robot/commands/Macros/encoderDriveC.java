@@ -44,7 +44,7 @@ public class encoderDriveC extends CommandBase{
 
         while (m_leftEncoder.getPosition() < targetCounts && m_rightEncoder.getPosition() < targetCounts) {
             double speed = Math.min(speedInchesPerSecond, (targetCounts - m_leftEncoder.getPosition()) / kEncoderCountsPerRevolution);
-            drive.tankDrive((-speed*.5), (speed*.5)); 
+            drive.tankDrive((-speed*.5), (speed*.47)); 
         }
         m_drive.stopMotor();//replace with actual stop tank.
         drive.resetEncoders();

@@ -13,13 +13,12 @@ public class balanceAuto extends SequentialCommandGroup {
     //moves the intake down for 3 seconds at a speed of 70% power
     encoderDriveC encoderDriveL = new encoderDriveC(tank,40,1);
     //drives 35 inches at a speed of 5 inches per second
-    encoderDriveF encoderDriveForward = new encoderDriveF(tank,15,1);
+    encoderDriveF encoderDriveForward = new encoderDriveF(tank,18.85,1.2);
         //drive
-        
     gyro gyroL = new gyro(tank, 0);
     turnAuto turnAutoL = new turnAuto(tank,.85,.4);
     //
-    addCommands(flipDownL, shootOutL,encoderDriveL,encoderDriveForward,gyroL,turnAutoL);
+    addCommands(flipDownL, shootOutL,encoderDriveL,encoderDriveForward,turnAutoL);
     // 
     }
 }

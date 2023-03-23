@@ -83,6 +83,7 @@ public class tankDriveS extends SubsystemBase{
         backRight.burnFlash();
     }
     public void resetNavX(){
-     //   navx.calibrate();
+        navx.reset();
+        navx.calibrate();
     }
 }

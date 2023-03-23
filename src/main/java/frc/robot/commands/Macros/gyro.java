@@ -33,9 +33,13 @@ double correction;
         currentAngle = drive.navx.getRoll(); //
         SmartDashboard.putNumber("current Angle", currentAngle);
         correction = desired-currentAngle;
-        if (Math.abs(correction)>.5){
+        if (Math.abs(correction)>1){
             speed = correction*.1;
             drive.tankDrive(-speed,speed);
+        }
+        else if (Math.abs(correction)<1){
+            speed = correction*.1;
+            drive.tankDrive(speed,-speed);
         }
         else{
         drive.tankDrive(0,0);
