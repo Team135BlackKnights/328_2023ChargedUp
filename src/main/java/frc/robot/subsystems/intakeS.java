@@ -17,7 +17,7 @@ public class intakeS extends SubsystemBase { //motors for intake
      //public DigitalInput tooFarIn = new DigitalInput(2);
      public intakeS(){
           inAndOutEncoder = inAndOut.getEncoder();
-          inAndOut.setSmartCurrentLimit(12);
+          inAndOut.setSmartCurrentLimit(20);
           inAndOut.setIdleMode(IdleMode.kBrake);
           inAndOut.burnFlash();
      }

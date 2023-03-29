@@ -11,7 +11,6 @@ import frc.robot.commands.Macros.*;
 
   public class driveAuto extends SequentialCommandGroup {
   public driveAuto(tankDriveS drive, intakeS intake, liftS lift){
-    forwardDriveAuto basicAutoL = new forwardDriveAuto(drive, 4.828 , .4);
     
    // otherAuto otherAutoL = new otherAuto(drive, 10, .4);
    encoderDriveC encoderDriveL = new encoderDriveC(drive, 38,1);
