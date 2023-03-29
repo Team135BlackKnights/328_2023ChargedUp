@@ -19,13 +19,6 @@ double correction;
     @Override
     public void initialize(){
         System.out.print("initializing Balancer");
-        /*while(gyroError >= 358 && gyroError  <= 2){
-            gyroError = drive.navx.getPitch();
-            gyroError = gyroError%360;
-            drive.tankDrive(-.7,.7);
-            SmartDashboard.putNumber("gyro alignment",gyroError);
-        }
-        */
     }
     @Override
     public void execute(){
@@ -36,12 +29,7 @@ double correction;
         if (Math.abs(correction)>1){
             speed = correction*.1;
             drive.tankDrive(-speed,speed);
-        }
-        else if (Math.abs(correction)<1){
-            speed = correction*.1;
-            drive.tankDrive(speed,-speed);
-        }
-        else{
+        } else {
         drive.tankDrive(0,0);
         isFinished = true;
         }
