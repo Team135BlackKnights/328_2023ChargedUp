@@ -29,7 +29,12 @@ double correction;
         if (Math.abs(correction)>1){
             speed = correction*.1;
             drive.tankDrive(-speed,speed);
-        } else {
+        } 
+        /* else if (Math.abs(correction)<1){
+            speed = correction*.1;
+            drive.tankDrive(speed,-speed);
+        }*/
+        else {
         drive.tankDrive(0,0);
         isFinished = true;
         }
