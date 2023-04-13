@@ -22,11 +22,12 @@ boolean holdSomething = false;
     }
 
     public void execute(){
+      //Puts number for the associated key
       SmartDashboard.putNumber("in and out value", intakeS.inAndOutEncoder.getPosition());
       SmartDashboard.putNumber("claw current", intake.inAndOut.getOutputCurrent());
       SmartDashboard.putNumber("left wheels current", intake.leftWheels.getOutputCurrent());
       SmartDashboard.putNumber("right wheels current", intake.rightWheels.getOutputCurrent());
-      
+      //
       
        if (robotContainer.ManipControl.getAButton() == true) {
         //while (intakeS.ManipUpEncoder.getPosition() != 30/42 ) {

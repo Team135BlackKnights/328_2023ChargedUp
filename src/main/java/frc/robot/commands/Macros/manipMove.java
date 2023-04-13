@@ -16,9 +16,13 @@ boolean isFinished;
     Timer timeElapsed= new Timer();
     public manipMove(liftS liftS,intakeS subsystem, double desiredTime, double MotorSpeed ){
         seconds = desiredTime;
+        //when refering to desired time you can also say "seconds"
         intake = subsystem;
+        //when saying intake you are refering to the subsystem intakeS
         lift = liftS;
+        //when saying the word lift you are refering  to the subsystem liftS
         autoSpeed = MotorSpeed;
+        //when saying the word "autoSpeed" you are refering to the motor Speed
         addRequirements(subsystem);
         
     }
@@ -26,11 +30,15 @@ boolean isFinished;
     public void initialize(){
         System.out.print("initializing flipDown");
     lift.resetEncoders();
+    //resets the encoders so that they can be ready when the match starts
     timeElapsed.start();
+    //starts a timer
     if(autoSpeed<0){
         flip=true;
+        //if the motor speed is less than 0 the manipulator will stay up
     }else{
         flip=false;
+        //if the motor speed is more than 0 the manipulator will be down
     }
     isFinished = false;    
     }
