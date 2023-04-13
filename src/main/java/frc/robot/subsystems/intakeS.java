@@ -18,7 +18,7 @@ public class intakeS extends SubsystemBase { //motors for intake
      public intakeS(){
      //Sets encoder and voltage limit for the motor and writes setting in flashdrives for inAndOut
           inAndOutEncoder = inAndOut.getEncoder();
-          inAndOut.setSmartCurrentLimit(12);
+          inAndOut.setSmartCurrentLimit(20);
           inAndOut.setIdleMode(IdleMode.kBrake);
           inAndOut.burnFlash();
      }

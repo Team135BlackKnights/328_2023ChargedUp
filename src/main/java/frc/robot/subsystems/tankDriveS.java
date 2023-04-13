@@ -10,7 +10,6 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import com.kauailabs.navx.frc.*;
 import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class tankDriveS extends SubsystemBase{ 
@@ -92,6 +91,8 @@ public class tankDriveS extends SubsystemBase{
     }
 
     public void resetNavX(){
-     //   navx.calibrate();
+        navx.reset();
+        navx.zeroYaw();
+        navx.calibrate();
     }
 }

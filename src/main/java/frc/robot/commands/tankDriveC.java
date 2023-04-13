@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.robotContainer;
 import frc.robot.subsystems.tankDriveS;
-import java.math.MathContext;
 import edu.wpi.first.networktables.NetworkTableInstance;
 public class tankDriveC extends CommandBase{
     private final tankDriveS drive;
@@ -26,10 +25,13 @@ public class tankDriveC extends CommandBase{
       targetType= targetType%2;
     }
     (tankDriveS.limelightNetworkTable.getEntry("pipeline")).setNumber(targetType);
- 
   double x = tankDriveS.limelightNetworkTable.getEntry("tx").getDouble(0.0); 
   double y = tankDriveS.limelightNetworkTable.getEntry("ty").getDouble(0.0); 
-  double area = tankDriveS.limelightNetworkTable.getEntry("ta").getDouble(0.0); 
+  double area = tankDriveS.limelightNetworkTable.getEntry("ta").getDouble(0.0);
+  SmartDashboard.putNumber("autoPitch", drive.navx.getPitch());
+  SmartDashboard.putNumber("autoRoll",drive.navx.getRoll());
+  SmartDashboard.putNumber("autoAngle",drive.navx.getAngle());
+
     SmartDashboard.putNumber("target area",area);
   //  SmartDashboard.putNumber("y axis rotation", drive.navx.getRoll());
   //  SmartDashboard.putNumber("x axis rotation",drive.navx.getYaw());
@@ -53,13 +55,11 @@ double rightSpeed = robotContainer.DriveControl.getRightY();
     }else{
       pipe=0;
     }
+    /* pipe += 1%2 */
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(pipe);
   }
-SmartDashboard.putNumber("Left Motor",-leftSpeed*speedMod);
-SmartDashboard.putNumber("Right Motor", rightSpeed*speedMod);
 drive.tankDrive(-leftSpeed*speedMod,rightSpeed*speedMod);
 distance = Math.sqrt(x*x+y*y);
-SmartDashboard.putNumber("distance", distance);
 robotContainer.DriveControl.setRumble(RumbleType.kBothRumble, area*2);}//the two makes it vibrate more
 
 

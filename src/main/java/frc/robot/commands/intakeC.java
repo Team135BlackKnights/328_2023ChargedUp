@@ -24,10 +24,14 @@ boolean holdSomething = false;
     public void execute(){
       //Puts number for the associated key
       SmartDashboard.putNumber("in and out value", intakeS.inAndOutEncoder.getPosition());
+<<<<<<< HEAD
       SmartDashboard.putNumber("claw current", intake.inAndOut.getOutputCurrent());
       SmartDashboard.putNumber("left wheels current", intake.leftWheels.getOutputCurrent());
       SmartDashboard.putNumber("right wheels current", intake.rightWheels.getOutputCurrent());
       //
+=======
+      
+>>>>>>> 2bbd180a4948b2551e3443da1bda153b7e2c6977
       
        if (robotContainer.ManipControl.getAButton() == true) {
         //while (intakeS.ManipUpEncoder.getPosition() != 30/42 ) {
@@ -41,7 +45,7 @@ boolean holdSomething = false;
      // while (intakeS.ManipUpEncoder.getPosition() != 60/42 ) {
         //intake.inAndOut.set(motorSpeedHandling); 
              //closes the arms to a 60 degree angle
-             if (intake.inAndOutEncoder.getPosition()<5){
+             if (intakeS.inAndOutEncoder.getPosition()<5){
               intake.intakeMoveOut(motorSpeedHandling);
              }            
      }
@@ -55,13 +59,13 @@ boolean holdSomething = false;
           //Takes stuff in with wheels
       }
       else if (robotContainer.ManipControl.getLeftBumper() == true) { 
-        intake.leftWheels.set(-0.4);
-        intake.rightWheels.set(0.4);
+        intake.leftWheels.set(-0.328);
+        intake.rightWheels.set(0.328);
         //Pushes things out with wheels
       }
       else if (robotContainer.ManipControl.getRightTriggerAxis() >= .69){
-        intake.leftWheels.set(.8);
-       intake.rightWheels.set(-.8);
+        intake.leftWheels.set(1.0);
+       intake.rightWheels.set(-1.0);
         //Pushes faster
       }
         
